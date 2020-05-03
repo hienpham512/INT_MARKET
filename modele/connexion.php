@@ -1,62 +1,33 @@
 <?php
 session_start();
+$bdd = new PDO('mysql:host=localhost;dbname=intmarket','root','root');
 
-$bdd = new PDO('mysql:host=localhost;dbname=user','root','root');
-
-if(isset($_POST['formconnect']))
-{
-	$mailconnect = htmlspecialchars($_POST['mailconnect']);
-	$passwordconnect = sha1($_POST['passwordconnect']);
-	if(!empty($mailconnect) AND !empty($passwordconnect))
-	{
-		$requete = $bdd -> prepare("SELECT * FROM membre WHERE mail= ? AND password = ? ");
-		$requete -> execute (array ($mailconnect, $passwordconnect));
-		$userexist = $requete -> rowcount();
-		if($userexist == 1)
-		{
-			$userinfo = $requete -> fetch();
-			$_SESSION["id"] = $userinfo["id"];
-			$_SESSION["pseudo"] = $userinfo["pseudo"];
-			$_SESSION["mail"] = $userinfo["mail"];
-			$_SESSION["password"] = $userinfo["password"];
-			header("Location: profil.php?id=".$_SESSION['id']);
-
-		}
-		else
-		{
-			$erreur = "Mauvais mail ou mot de passe";
-		}
-	}
-	else
-	{
-		$erreur = "Tous les champs doivent etre complétés ! ";
-	}
+if(isset($_POST)){
+    $donne = $_POST;
 }
-	
+var_dump($donne);
+
+if(isset($donne['valider'])){
+    $mail = $donne['mail'];
+    $mdp = $donne['mdp'];
+    $reponde = $bdd->query("SELECT mail,mdp FROM intmarket.utilisateur");
+    while($trouve = $reponde->fetch()){
+        if($donne['mail'] == $trouve['mail'] && $donne['mdp'] == $trouve['mdp']){
+            $connexion = true;
+            $id_utilisateur = $trouve['idUtilisateur'];
+            break;
+        }else{
+            $connexion = false;
+            $id_utilisateur = '';
+        }
+    }
+    if($connexion == false){
+        header('location: ../index.php?action=formulaire_connexion&erreur=connexion');
+    }else{
+        $_SESSION['utilisateur_courant'] = $id_utilisateur;
+        header('location: ../index.php');
+    }
+}else{
+    header("location: ../index.php?action=formulaire_connexion");
+}
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>inscription</title>
-	<meta charset="utf-8">
-</head>
-<body>
-	<div align="center">
-		<h2>Connexion</h2>
-		<br/>
-		<form method="POST" action="">
-			<input type="email" name="mailconnect" placeholder="Mail"/>
-			<input type="password" name="passwordconnect" placeholder="mot de passe"/>
-			<input type="submit" name="formconnect" value="Se connecter !">
-
-		</form>
-		<?php
-			if(isset($erreur))
-			{
-				echo '<font color="red">'.$erreur."</font>";
-			}
-		?>
-	</div>
-</body>
-</html>
