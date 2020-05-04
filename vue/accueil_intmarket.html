@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>INTMARKET accueil</title>
-    <link rel="stylesheet" href="../vue/style_accueil.css"/>
+    <link rel="stylesheet" href="./vue/style_accueil.css" />
 </head>
-<body>
-    <table border="0" class="table_border" width="100%" ><tr class="ligne1"><th width="50px" height="40px" align="left">
-    <div class="dropdown">
-        <img src="../vue/photo_specific/photo_identifiant.png" height ="30px"  width="100px" class="dropbtn" alt="identifier">
-        <div class="dropdown-content">
-            <form action="../index.php?action=formulaire_connexion" method="post" class = "a">
-                <button name="connexion" class="bouton" >connexion</button>
-            </form>
-            <form action="../index.php?action=formulaire_inscription" method="post" class = "a">
-                <button name="inscription" class="bouton">inscription</button>
-            </form>
-        </div>
-    </div>
-        <th width="50px">
-        <div class="logo">
-            <a href="../index.php"><img src ='../vue/photo_specific/logo.png' height="105px" width="105px"></a>
-        </div>
-        <th >
 
-        <div class="rechercher">
-            <form action="../index.php?action=rehercher" method="post">
-                <img src="../vue/photo_specific/categorie.png" height="30px" width="40px" class="categorie">
-                <th width="40%" boder="0">
-                <input type="text" class="box_re" name="mot_cle" size="100%" >
-                <th align="left">
-                <button><input type="image" src="../vue/photo_specific/photo_loupe.png" height="30px" width="30px" class="btn_re"></button>
-            </th>
-        </div>
-        <th>
-        <div class="panier">
-            <a href="../index.php?action=panier"><img src="../vue/photo_specific/panier.png" height="105px" width="105px"></a>
-        </div>
-        </th>
-    </tr>
+<body>
+    <table border="0" class="table_border" width="100%">
+        <tr class="ligne1">
+            <th width="50px" height="40px" align="left">
+                <div class="dropdown">
+                    <img src="./vue/photo_specific/photo_identifiant.png" height="30px" width="100px" class="dropbtn" alt="identifier">
+                    <div class="dropdown-content">
+                        <form action="./index.php?action=formulaire_connexion" method="post" class="a">
+                            <button name="connexion" class="bouton">connexion</button>
+                        </form>
+                        <form action="./index.php?action=formulaire_inscription" method="post" class="a">
+                            <button name="inscription" class="bouton">inscription</button>
+                        </form>
+                    </div>
+                </div>
+                <th width="50px">
+                    <div class="logo">
+                        <a href="./index.php"><img src='./vue/photo_specific/logo.png' height="105px" width="105px"></a>
+                    </div>
+                    <th>
+
+                        <div class="rechercher">
+                            <form action="./index.php?action=rehercher" method="post">
+                                <img src="./vue/photo_specific/categorie.png" height="30px" width="40px" class="categorie">
+                                <th width="40%" boder="0">
+                                    <input type="text" class="box_re" name="mot_cle" size="100%">
+                                    <th align="left">
+                                        <button><input type="image" src="./vue/photo_specific/photo_loupe.png" height="30px" width="30px" class="btn_re"></button>
+                                    </th>
+                        </div>
+                        <th>
+                            <div class="panier">
+                                <a href="./index.php?action=panier"><img src="./vue/photo_specific/panier.png" height="105px" width="105px"></a>
+                            </div>
+                        </th>
+        </tr>
     </table>
 </body>
+
 </html>
