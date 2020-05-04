@@ -1,13 +1,15 @@
 <?php
+session_start();
 echo "<html><head><title>accueil</title></head><body><table border='0' width='100%' ><tr><th class='left_logo' width='50%' height='650px'>
 <a href='../index.php'><img class='accueil_btn' src='../vue/photo_specific/logo_2.png' width='50%'></a><th>";
 $erreur ='';
+
 if(isset($_GET['erreur'])) {
-    if (isset($_GET['erreur']) && $_GET['erreur'] == "case_vide") {
+    if ($_GET['erreur'] == "case_vide") {
         $erreur = "ERREUR : Il faut remplir tous les cases!";
-    } elseif (isset($_GET['erreur']) && $_GET['erreur'] == 'email_pris') {
+    } elseif ($_GET['erreur'] == 'email_pris') {
         $erreur = "ERREUR : le mail a été utilisé par un autre utilisateur!";
-    } elseif (isset($_GET['erreur']) && $_GET['erreur'] == 'comf_mdp') {
+    } elseif ($_GET['erreur'] == 'comf_mdp') {
         $erreur = "ERREUR : La comfirmation de mot de pass n'est pas dupliqué!";
     } else {
         $erreur = '';
@@ -25,8 +27,7 @@ echo "<input type='password' name='mdp' placeholder='Mot de pass' class='input'>
 echo "<input type='password' name='comf_mdp' placeholder='Comfirmer mot de pass' class='input'><br>";
 echo "<br><input type='submit' name='valider' value='valider' class='valider_btn'>";
 echo "</form>";
-echo "<br><br><br><form method='post'>
-       <input type='hidden' name='connexion'>
+echo "<br><br><br>
        <a href='../index.php?action=formulaire_connexion' class='retourner_btn'>Avez-vous déjà une compte? Connectez-vous.</a></form>";
-echo "</form></tr></table></body></html>";
+echo "</tr></table></body></html>";
 ?>

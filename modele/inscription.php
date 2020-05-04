@@ -11,18 +11,13 @@ if(isset($donne['valider'])){
     $nom = $donne['nom'];
     $prenom = $donne['prenom'];
     $addresse = $donne['addresse'];
-    foreach ($donne as $key => $value){
-        if($value == ''){
-            echo "a";
-            $erreur = "case_vide";
-            header("location: ../index.php?action=formulaire_inscription&erreur=$erreur");
-        }else{
-            $erreur = '';
-        }
-    }
+
     $reponde = $bdd->query("SELECT mail FROM intmarket.utilisateur");
     while($trouve = $reponde->fetch()){
-        if($donne['mail'] == $trouve['mail']){
+        if($donne['mail'] == '' || $donne['mdp'] == '' ||$donne['comf_mdp'] == '' || $donne['nom'] == '' || $donne['addresse'] == ''|| $donne['nom'] == '' || $donne['prenom' == '']){
+            $erreur = "case_vide";
+            break;
+        }elseif($donne['mail'] == $trouve['mail']){
             $erreur = "email_pris";
             $connexion = false;
             break;

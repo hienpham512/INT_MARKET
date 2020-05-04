@@ -3,8 +3,10 @@ echo "<html><head><title>accueil</title></head><body><table border='0' width='10
 <a href='../index.php' ><img class='accueil_btn' src='../vue/photo_specific/logo_2.png' width='50%'></a><th>";
 $erreur = '';
 if(isset($_GET['erreur'])) {
-    if(isset($_GET['erreur']) && $_GET['erreur'] =='connexion') {
+    if($_GET['erreur'] =='connexion') {
         $erreur = "ERREUR : l'email ou le mot de pass n'est pas validé! ";
+    }elseif ($_GET['erreur'] == "case_vide") {
+        $erreur = "ERREUR : Il faut remplir tous les cases!";
     }else {
         $erreur = '';
     }
@@ -17,7 +19,6 @@ echo "<input type='email' name='mail' placeholder='Email' class='input'><br>";
 echo "<input type='password' name='mdp' placeholder='Mot de pass' class='input'><br>";
 echo "<br><input type='submit' name='valider' value='valider' class='valider_btn'>";
 echo "</form>";
-echo "<br><br><br><form method='post'>
-               <input type='hidden' name='connexion'><a href='../index.php?action=formulaire_inscription' class='retourner_btn'>N'avez-vous pas une compte? Inscirez-vous.</a></form>";
-echo "</form></tr></table></body></html>";
+echo "<br><br><br><input type='hidden' name='connexion'><a href='../index.php?action=formulaire_inscription' class='retourner_btn'>N'avez-vous pas une compte? Inscirez-vous.</a></form>";
+echo "</tr></table></body></html>";
 ?>

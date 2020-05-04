@@ -5,7 +5,9 @@
     border: none;
     cursor: pointer;
 }
-
+.bouton:nth-child(7n + 1){
+    grid-column: 2 / span 2;
+}
 .dropdown {
     position: relative;
     display: inline-block;

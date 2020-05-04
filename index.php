@@ -6,13 +6,7 @@
     }
     switch ($page) {
         case 'index':
-            include('./vue/accueil_identifiant.html');
-            break;
-        case 'connexion':
-            include ('./modele/connexion.php');
-            break;
-        case 'inscription':
-            include ('./modele/inscription.php');
+            include('./vue/accueil_intmarket.html');
             break;
         case 'accueil_identifiant':
             include('./controller/accueil_identifiant.php');
