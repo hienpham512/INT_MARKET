@@ -5,11 +5,10 @@ $bdd = new PDO('mysql:host=localhost;dbname=intmarket','root','root');
 if(isset($_POST)){
     $donne = $_POST;
 }
-
 if(isset($donne['valider'])){
     $mail = $donne['mail'];
     $mdp = $donne['mdp'];
-    $reponde = $bdd->query("SELECT mail,mdp FROM intmarket.utilisateur");
+    $reponde = $bdd->query("SELECT mail,mdp,idUtilisateur FROM intmarket.utilisateur");
     while($trouve = $reponde->fetch()){
         if($donne['mdp'] == ''|| $donne['mail' == '']) {
             $erreur = "case_vide";
@@ -27,10 +26,15 @@ if(isset($donne['valider'])){
         }
     }
     if($connexion == false){
-        header("location: ../index.php?action=formulaire_connexion&erreur=$erreur");
+        header("location: /index.php?action=formulaire_connexion&erreur=$erreur");
     }else{
-        $_SESSION['utilisateur_courant'] = $id_utilisateur;
-        header('location: ../index.php');
+        if(isset($donne['reconnexion'])){
+            $_SESSION['idUtilisateur'] = $id_utilisateur;
+            header("location: ../index.php?action=profil_utilisateur_courant");
+        }else{
+            $_SESSION['idUtilisateur'] = $id_utilisateur;
+            header('location: ../index.php');
+        }
     }
 }else{
     header("location: ../index.php?action=formulaire_connexion");
