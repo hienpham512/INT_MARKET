@@ -13,7 +13,7 @@ if(isset($_GET['erreur'])) {
         $erreur = '';
     }
 }
-echo "<form action='/modele/connexion.php' method='post'>";
+echo "<form action='./modele/connexion.php' method='post'>";
 if($erreur == "Reconnecter pour accèder à votre profil, s'il vous plaît!"){
     echo "<input type='hidden' name='reconnexion' value='reconnexion'>";
 }

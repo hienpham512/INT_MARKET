@@ -1,5 +1,7 @@
 <?php
 session_start();
+session_destroy();
+session_start();
 $bdd = new PDO('mysql:host=localhost;dbname=intmarket','root','root');
 
 if(isset($_POST)){
