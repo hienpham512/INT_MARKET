@@ -11,6 +11,7 @@ if (isset($donne['valider'])) {
     $addresse = $donne['addresse'];
 
     $reponde = $bdd->query("SELECT mail FROM intmarket.utilisateur");
+    $connexion = true;
     while ($trouve = $reponde->fetch()) {
         if ($donne['mail'] == '' || $donne['mdp'] == '' || $donne['comf_mdp'] == '' || $donne['nom'] == '' || $donne['addresse'] == '' || $donne['nom'] == '' || $donne['prenom' == '']) {
             $erreur = "case_vide";
