@@ -8,9 +8,6 @@
         case 'index':
             include('./vue/accueil_intmarket.html');
             break;
-        case 'accueil_identifiant':
-            include('./controller/accueil_identifiant.php');
-            break;
         case 'formulaire_connexion':
             include('./vue/formulaire_connexion.html');
             break;
