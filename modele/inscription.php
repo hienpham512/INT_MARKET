@@ -4,36 +4,35 @@ $bdd = new PDO('mysql:host=localhost;dbname=intmarket', 'root', 'root');
 
 $donne = $_POST;
 if (isset($donne['valider'])) {
-    $mail = $donne['mail'];
+    $mail = strtolower($donne['mail']);
     $mdp = $donne['mdp'];
     $nom = $donne['nom'];
     $prenom = $donne['prenom'];
     $addresse = $donne['addresse'];
 
-    $connexion = true;
+    $inscription = true;
 
     $reponde = $bdd->query("SELECT mail FROM intmarket.utilisateur");
     if ($donne['mail'] == '' || $donne['mdp'] == '' || $donne['comf_mdp'] == '' || $donne['nom'] == '' || $donne['addresse'] == '' || $donne['nom'] == '' || $donne['prenom' == '']) {
         $erreur = "case_vide";
-        $connexion = false;
-    }
-    while ($trouve = $reponde->fetch()) {
-        if ($donne['mail'] == '' || $donne['mdp'] == '' || $donne['comf_mdp'] == '' || $donne['nom'] == '' || $donne['addresse'] == '' || $donne['nom'] == '' || $donne['prenom' == '']) {
-            $erreur = "case_vide";
-            break;
-        } elseif ($donne['mail'] == $trouve['mail']) {
-            $erreur = "email_pris";
-            $connexion = false;
-            break;
-        } elseif ($donne['mdp'] !== $donne['comf_mdp']) {
-            $erreur = 'comf_mdp';
-            $connexion = false;
-            break;
-        } elseif ($donne['mail'] !== $trouve['mail'] && $donne['mdp'] == $donne['comf_mdp']) {
-            $connexion = true;
+        $inscription = false;
+    }else{
+        while ($trouve = $reponde->fetch()) {
+            if ($donne['mail'] == $trouve['mail']) {
+                $erreur = "email_pris";
+                $inscription = false;
+                break;
+            } elseif ($donne['mdp'] !== $donne['comf_mdp']) {
+                $erreur = 'comf_mdp';
+                $inscription = false;
+                break;
+            } elseif ($donne['mail'] !== $trouve['mail'] && $donne['mdp'] == $donne['comf_mdp']) {
+                $inscription = true;
+            }
         }
     }
-    if ($connexion == false) {
+
+    if ($inscription == false) {
 
         header("location: ../index.php?action=formulaire_inscription&erreur=$erreur");
     } else {
