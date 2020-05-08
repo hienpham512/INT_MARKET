@@ -8,7 +8,7 @@ if(isset($_POST)){
     $donne = $_POST;
 }
 if(isset($donne['valider'])){
-    $mail = $donne['mail'];
+    $mail = strtolower($donne['mail']);
     $mdp = $donne['mdp'];
     $reponde = $bdd->query("SELECT mail,mdp,idUtilisateur FROM intmarket.utilisateur");
     while($trouve = $reponde->fetch()){
