@@ -10,8 +10,13 @@ if (isset($donne['valider'])) {
     $prenom = $donne['prenom'];
     $addresse = $donne['addresse'];
 
-    $reponde = $bdd->query("SELECT mail FROM intmarket.utilisateur");
     $connexion = true;
+
+    $reponde = $bdd->query("SELECT mail FROM intmarket.utilisateur");
+    if ($donne['mail'] == '' || $donne['mdp'] == '' || $donne['comf_mdp'] == '' || $donne['nom'] == '' || $donne['addresse'] == '' || $donne['nom'] == '' || $donne['prenom' == '']) {
+        $erreur = "case_vide";
+        $connexion = false;
+    }
     while ($trouve = $reponde->fetch()) {
         if ($donne['mail'] == '' || $donne['mdp'] == '' || $donne['comf_mdp'] == '' || $donne['nom'] == '' || $donne['addresse'] == '' || $donne['nom'] == '' || $donne['prenom' == '']) {
             $erreur = "case_vide";
