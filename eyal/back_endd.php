@@ -52,6 +52,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">AJOUTER</a>
     <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">MODIFIER</a>
     <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">SUPRIMER</a>
+
   </div>
 </div>
 
