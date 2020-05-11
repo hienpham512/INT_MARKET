@@ -120,7 +120,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 </head>
 <body>
 	<table align="center"  border="1">
-		<tr><th>ID</th><th>nom</th></tr>
+		<tr> <th>ID</th> <th>nom</th> <th>type</th> </tr>
 		<?php
 			include("connexionn.php");
 			$query = "select * from categorie";
@@ -130,9 +130,12 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 				{
 					$id=$data[$i]["idCategorie"];
 
-					$nom=$data[$i]["nomCategoriecol"];
+                    $nom=$data[$i]["nomCategoriecol"];
+                    
+                    $type=$data[$i]["typeCategorie"];
+
 					
-					echo "<tr><td>$id<br /></td>"." "."<td>$nom<br /></td>";
+					echo "<tr><td>$id<br /></td>"." "."<td>$nom<br /></td>"." "."<td>$type<br /></td>";
 					// echo "<td>";
 					// echo "<a href='delete_category.php?ID=$id' >Supprimer</a>"."  ";
 					echo "</tr>";
