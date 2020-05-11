@@ -14,11 +14,11 @@
         case 'formulaire_inscription':
             include('./vue/formulaire_inscription.html');
             break;
-            case 'back_end':
-            include('./controller/back_end.php');
-            break;
-            case 'afficher_categorie':
-                include('./controller/afficher_categorie.php');
+        case 'back_endd':
+                include('./eyal/back_endd.php');
+                break;
+        case 'categorie':
+                include('./eyal/categorie.php');
                 break;
         default:
             include('./controller/erreur.php');

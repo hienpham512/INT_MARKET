@@ -1,5 +1,5 @@
 
-
+<h1>bonjours</h1>
 <!-- eyal sekou  -->
 
 <!DOCTYPE html>
@@ -61,8 +61,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
    
   <div class="w3-padding-32">    <div class="w3-bar w3-border">
-      <a href="./index.php?action=afficher_article" class="w3-bar-item w3-button">ARTICLE</a>
-      <a href="./index.php?action=afficher_categorie" class="w3-bar-item w3-button w3-light-grey">CATEGORIE</a>
+      <a href="#" class="w3-bar-item w3-button">ARTICLE</a>
+      <a href="./index.php?action=categorie" class="w3-bar-item w3-button w3-light-grey">CATEGORIE</a>
       <a href="#" class="w3-bar-item w3-button">COMMANDE</a>
       <a href="#" class="w3-bar-item w3-button w3-hide-small">UTILISATEUR</a>
     </div>
@@ -117,7 +117,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 	<table align="center"  border="1">
 		<tr><th>ID</th><th>nom</th></tr>
 		<?php
-			include("connexion.php");
+			include("connexionn.php");
 			$query = "select * from categorie";
 			$resultat = $bdd -> query($query);
 			$data = $resultat -> fetchAll();

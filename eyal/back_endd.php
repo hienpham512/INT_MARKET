@@ -1,3 +1,5 @@
+<h1>bonours et bienvenue </h1>
+
 <!-- eyal sekou  -->
 
 <!DOCTYPE html>
@@ -37,6 +39,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <p>SUPRIMER</p>
   </a>
+  <a href="index.php" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <p>SITE</p>
+  </a>
+
 </nav>
 
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
@@ -59,9 +65,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
    
   <div class="w3-padding-32">    <div class="w3-bar w3-border">
-      <a href="./index.php?action=afficher_article" class="w3-bar-item w3-button">ARTICLE</a>
-      <a href="./index.php?action=afficher_categorie" class="w3-bar-item w3-button w3-light-grey">COMMANDE</a>
-      <a href="#" class="w3-bar-item w3-button">CATEGORIE</a>
+      <a href="#" class="w3-bar-item w3-button">ARTICLE</a>
+      <a href="./index.php?action=categorie" class="w3-bar-item w3-button w3-light-grey">CATEGORIE</a>
+      <a href="#" class="w3-bar-item w3-button">COMMANDE</a>
       <a href="#" class="w3-bar-item w3-button w3-hide-small">UTILISATEUR</a>
     </div>
   </div>
