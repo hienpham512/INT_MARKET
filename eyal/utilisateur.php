@@ -27,7 +27,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <!-- <i class="fa fa-home w3-xxlarge"></i> -->
     <p>AFFICHER</p>
   </a>
-  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+  <a href="./index.php?action=ajouter_categorie" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <p>AJOUTER</p>
   </a>
   <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
