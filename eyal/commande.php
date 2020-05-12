@@ -62,47 +62,43 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
    
   <div class="w3-padding-32">    <div class="w3-bar w3-border">
-      <a href="./index.php?action=article" class="w3-bar-item w3-button">ARTICLE</a>
+      <a href="#" class="w3-bar-item w3-button">ARTICLE</a>
       <a href="./index.php?action=categorie" class="w3-bar-item w3-button w3-light-grey">CATEGORIE</a>
       <a href="./index.php?action=commande" class="w3-bar-item w3-button">COMMANDE</a>
       <a href="./index.php?action=utilisateur" class="w3-bar-item w3-button w3-hide-small">UTILISATEUR</a>
     </div>
   </div>
 </header>
-
-
-    
-    <!-- Grid for pricing tables
-    <h3 class="w3-padding-16 w3-text-light-grey">ARTICLE</h3>
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-half w3-margin-bottom">
-        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>         
-
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Photography</li>
-          <li class="w3-padding-16">5GB Storage</li>
-          <li class="w3-padding-16">Mail Support</li>
-          <li class="w3-padding-16">
-            <h2>$ 10</h2>
-            <span class="w3-opacity">per month</span>
-          </li>
-          <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
-        </ul>
-      </div> -->
-
-    
-
-
-    <!-- End Grid/Pricing tables -->
     </div>
-  
-  
+  </div>
 
-<!-- END PAGE CONTENT -->
-</div>
+  <table align="center"  border="1">
+		<tr> <th>ID</th> <th>Date</th> <th>utilisateur</th> </tr>
+		<?php
+			include("connexionn.php");
+			$query = "select * from commande";
+			$resultat = $bdd -> query($query);
+			$data = $resultat -> fetchAll();
+			for ($i=0; $i < count($data); $i++)
+				{
+					$id=$data[$i]["idCommande"];
+
+                    $date=$data[$i]["dateCommande"];
+                    
+                    $utilisateur=$data[$i]["utilisateur_idUtilisateur"];
+
+					
+					echo "<tr><td>$id<br /></td>"." "."<td>$date<br /></td>"." "."<td>$utilisateur<br /></td>";
+					echo "</tr>";
+				}
+		?>
+	</table>
+	<br>
+
 
 </body>
 </html>
+
+
+
+
