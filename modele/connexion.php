@@ -28,7 +28,7 @@ if(isset($donne['valider'])){
         }
     }
     if($connexion == false){
-        header("location: /index.php?action=formulaire_connexion&erreur=$erreur");
+        header("location: ../index.php?action=formulaire_connexion&erreur=$erreur");
     }else{
         if(isset($donne['reconnexion'])){
             $_SESSION['idUtilisateur'] = $id_utilisateur;

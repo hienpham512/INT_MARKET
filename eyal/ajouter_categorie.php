@@ -1,5 +1,13 @@
+ADD
+
 <!DOCTYPE html>
 <html>
+    <style>
+.m{
+    text-align: center;
+}
+
+        </style>
 <title>BACK-END</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,42 +70,20 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
    
   <div class="w3-padding-32">    <div class="w3-bar w3-border">
-      <a href="./index.php?action=article" class="w3-bar-item w3-button">ARTICLE</a>
-      <a href="./index.php?action=categorie" class="w3-bar-item w3-button w3-light-grey">CATEGORIE</a>
+      <a href="./index.php?action=ajouter_article" class="w3-bar-item w3-button">ARTICLE</a>
+      <a href="./index.php?action=ajouter_categorie" class="w3-bar-item w3-button w3-light-grey">CATEGORIE</a>
       <a href="./index.php?action=commande" class="w3-bar-item w3-button">COMMANDE</a>
       <a href="./index.php?action=utilisateur" class="w3-bar-item w3-button w3-hide-small">UTILISATEUR</a>
     </div>
   </div>
 </header>
-    </div>
-  </div>
 
-  <table align="center"  border="1">
-		<tr> <th>ID</th> <th>nom</th> <th>type</th> <th>action</th> </tr>
-		<?php
-			include("connexionn.php");
-			$query = "select * from categorie";
-			$resultat = $bdd -> query($query);
-			$data = $resultat -> fetchAll();
-			for ($i=0; $i < count($data); $i++)
-				{
-					$id=$data[$i]["idCategorie"];
 
-                    $nom=$data[$i]["nomCategoriecol"];
-                    
-                    $type=$data[$i]["typeCategorie"];
+        </div>
+  
+  
 
-					
-          echo "<tr><td>$id<br /></td>"." "."<td>$nom<br /></td>"." "."<td>$type<br /></td>";
-          echo "<td>";
-
-					echo "<a href='./index.php?action=sup_categorie?idCategorie=$id' >Supprimer</a>"."  ";
-					echo "</tr>";
-				}
-		?>
-	</table>
-	<br>
-
+</div>
 
 </body>
 </html>
@@ -105,3 +91,44 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
 
 
+
+
+
+
+<form class="m" method="POST" action="">
+        <input class="button5" type="substr_compare" name="nomCategoriecol" placeholder="Nom "/><br />
+
+        <input class="button5" type="substr_compare" name="typeCategorie" placeholder="Type "/><br />
+
+       
+                     <input class="button4" type="submit" value="OK"/><br/>
+                     <input class="button4" type="reset" value="Reset">
+
+
+    </form>
+    <?php
+
+    
+    
+    
+// connexion a la base de donne, recuperation des valeurs dans la bdd et affichage sur l'interface 
+include("connexionn.php");
+
+   if(isset($_POST['nomCategoriecol']) AND isset($_POST['typeCategorie']))
+   
+{
+   $requete = $bdd->prepare("INSERT INTO categorie(nomCategoriecol, typeCategorie) VALUES(?, ?)");
+
+   $requete->execute(array($_POST['nomCategoriecol'], $_POST['typeCategorie']));
+   ?>
+
+    <?php
+   }
+
+
+   
+
+    ?>
+
+</body>
+</html>
