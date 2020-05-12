@@ -73,7 +73,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </div>
 
   <table align="center"  border="1">
-		<tr> <th>ID</th> <th>nom</th> <th>type</th> </tr>
+		<tr> <th>ID</th> <th>nom</th> <th>type</th> <th>action</th> </tr>
 		<?php
 			include("connexionn.php");
 			$query = "select * from categorie";
@@ -88,7 +88,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
                     $type=$data[$i]["typeCategorie"];
 
 					
-					echo "<tr><td>$id<br /></td>"." "."<td>$nom<br /></td>"." "."<td>$type<br /></td>";
+          echo "<tr><td>$id<br /></td>"." "."<td>$nom<br /></td>"." "."<td>$type<br /></td>";
+          echo "<td>";
+
+					echo "<a href='./index.php?action=sup_categorie?idCategorie=$id' >Supprimer</a>"."  ";
 					echo "</tr>";
 				}
 		?>
