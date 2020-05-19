@@ -65,7 +65,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
       <a href="./index.php?action=article" class="w3-bar-item w3-button">ARTICLE</a>
       <a href="./index.php?action=categorie" class="w3-bar-item w3-button w3-light-grey">CATEGORIE</a>
       <a href="./index.php?action=commande" class="w3-bar-item w3-button">COMMANDE</a>
-      <a href="./index.php?action=utilisateur" class="w3-bar-item w3-button w3-hide-small">UTILISATEUR</a>
+      <a href="#" class="w3-bar-item w3-button w3-hide-small">UTILISATEUR</a>
     </div>
   </div>
 </header>
@@ -73,25 +73,29 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </div>
 
   <table align="center"  border="1">
-		<tr> <th>ID</th> <th>nom</th> <th>type</th> <th>action</th> </tr>
+		<tr> <th>Id</th> <th>Nom</th> <th>Prix</th> <th>Image</th> <th>Déscription</th> <th>Quantité</th>  </tr>
 		<?php
 			include("connexionn.php");
-			$query = "select * from categorie";
+			$query = "select * from article";
 			$resultat = $bdd -> query($query);
 			$data = $resultat -> fetchAll();
 			for ($i=0; $i < count($data); $i++)
 				{
-					$id=$data[$i]["idCategorie"];
+					$id=$data[$i]["idArticle"];
 
-                    $nom=$data[$i]["nomCategoriecol"];
+                    $nom=$data[$i]["nomArticle"];
                     
-                    $type=$data[$i]["typeCategorie"];
+                    $prix=$data[$i]["prixArticle"];
+
+                    $image=$data[$i]["imageArticle"];
+
+                    $description=$data[$i]["descriptionArticle"];
+
+                    $quantite=$data[$i]["quantite"];
 
 					
-          echo "<tr><td>$id<br /></td>"." "."<td>$nom<br /></td>"." "."<td>$type<br /></td>";
-          echo "<td>";
-
-					echo "<a href='./index.php?action=sup_categorie?idCategorie=$id' >Supprimer</a>"."  ";
+                    echo "<tr><td>$id<br /></td>"." "."<td>$nom<br /></td>"." "."<td>$prix<br /></td>"." "."<td>$image<br /></td>"." "."<td>$description<br /></td>
+                    "." "."<td>$quantite<br /></td>";
 					echo "</tr>";
 				}
 		?>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <title>BACK-END</title>
@@ -73,25 +74,29 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </div>
 
   <table align="center"  border="1">
-		<tr> <th>ID</th> <th>nom</th> <th>type</th> <th>action</th> </tr>
+		<tr> <th>Id</th> <th>Nom</th> <th>Prenom</th> <th>Mail</th> <th>Adresse</th> <th>Panier</th> </tr>
 		<?php
 			include("connexionn.php");
-			$query = "select * from categorie";
+			$query = "select * from utilisateur";
 			$resultat = $bdd -> query($query);
 			$data = $resultat -> fetchAll();
 			for ($i=0; $i < count($data); $i++)
 				{
-					$id=$data[$i]["idCategorie"];
+					$id=$data[$i]["idUtilisateur"];
 
-                    $nom=$data[$i]["nomCategoriecol"];
+                    $nom=$data[$i]["nom"];
                     
-                    $type=$data[$i]["typeCategorie"];
+                    $prenom=$data[$i]["prenom"];
+
+                    $mail=$data[$i]["mail"];
+
+                    $addresse=$data[$i]["addresse"];
+
+                    $panier=$data[$i]["panier"];
 
 					
-          echo "<tr><td>$id<br /></td>"." "."<td>$nom<br /></td>"." "."<td>$type<br /></td>";
-          echo "<td>";
-
-					echo "<a href='./index.php?action=sup_categorie?idCategorie=$id' >Supprimer</a>"."  ";
+                    echo "<tr><td>$id<br /></td>"." "."<td>$nom<br /></td>"." "."<td>$prenom<br /></td>"." "."<td>$mail<br /></td>
+                    "." "."<td>$addresse<br /></td>"." "."<td>$panier<br /></td>";
 					echo "</tr>";
 				}
 		?>

@@ -62,7 +62,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
    
   <div class="w3-padding-32">    <div class="w3-bar w3-border">
-      <a href="./index.php?action=article" class="w3-bar-item w3-button">ARTICLE</a>
+      <a href="#" class="w3-bar-item w3-button">ARTICLE</a>
       <a href="./index.php?action=categorie" class="w3-bar-item w3-button w3-light-grey">CATEGORIE</a>
       <a href="./index.php?action=commande" class="w3-bar-item w3-button">COMMANDE</a>
       <a href="./index.php?action=utilisateur" class="w3-bar-item w3-button w3-hide-small">UTILISATEUR</a>
@@ -73,25 +73,22 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </div>
 
   <table align="center"  border="1">
-		<tr> <th>ID</th> <th>nom</th> <th>type</th> <th>action</th> </tr>
+		<tr> <th>ID</th> <th>Date</th> <th>utilisateur</th> </tr>
 		<?php
 			include("connexionn.php");
-			$query = "select * from categorie";
+			$query = "select * from commande";
 			$resultat = $bdd -> query($query);
 			$data = $resultat -> fetchAll();
 			for ($i=0; $i < count($data); $i++)
 				{
-					$id=$data[$i]["idCategorie"];
+					$id=$data[$i]["idCommande"];
 
-                    $nom=$data[$i]["nomCategoriecol"];
+                    $date=$data[$i]["dateCommande"];
                     
-                    $type=$data[$i]["typeCategorie"];
+                    $utilisateur=$data[$i]["utilisateur_idUtilisateur"];
 
 					
-          echo "<tr><td>$id<br /></td>"." "."<td>$nom<br /></td>"." "."<td>$type<br /></td>";
-          echo "<td>";
-
-					echo "<a href='./index.php?action=sup_categorie?idCategorie=$id' >Supprimer</a>"."  ";
+					echo "<tr><td>$id<br /></td>"." "."<td>$date<br /></td>"." "."<td>$utilisateur<br /></td>";
 					echo "</tr>";
 				}
 		?>

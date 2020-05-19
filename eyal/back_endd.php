@@ -1,6 +1,4 @@
-<h1>bonours et bienvenue </h1>
 
-<!-- eyal sekou  -->
 
 <!DOCTYPE html>
 <html>
@@ -26,11 +24,11 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
   <!-- Avatar image in top left corner -->
   <img src='./vue/photo_specific/logo.png'  style="width:100%">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+  <a href="./index.php?action=back_endd" class="w3-bar-item w3-button w3-padding-large w3-black">
     <!-- <i class="fa fa-home w3-xxlarge"></i> -->
     <p>AFFICHER</p>
   </a>
-  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+  <a href="./index.php?action=ajouter_categorie" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
     <p>AJOUTER</p>
   </a>
   <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
@@ -66,18 +64,18 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
    
   <div class="w3-padding-32">    <div class="w3-bar w3-border">
-      <a href="#" class="w3-bar-item w3-button">ARTICLE</a>
+      <a href="./index.php?action=article" class="w3-bar-item w3-button">ARTICLE</a>
       <a href="./index.php?action=categorie" class="w3-bar-item w3-button w3-light-grey">CATEGORIE</a>
-      <a href="#" class="w3-bar-item w3-button">COMMANDE</a>
-      <a href="#" class="w3-bar-item w3-button w3-hide-small">UTILISATEUR</a>
+      <a href="./index.php?action=commande" class="w3-bar-item w3-button">COMMANDE</a>
+      <a href="./index.php?action=utilisateur" class="w3-bar-item w3-button w3-hide-small">UTILISATEUR</a>
     </div>
   </div>
 </header>
 
 
     
-    <!-- Grid for pricing tables -->
-    <!-- <h3 class="w3-padding-16 w3-text-light-grey">ARTICLE</h3>
+    <!-- Grid for pricing tables
+    <h3 class="w3-padding-16 w3-text-light-grey">ARTICLE</h3>
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-half w3-margin-bottom">
         <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
@@ -95,9 +93,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
             <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
           </li>
         </ul>
-      </div>
+      </div> -->
 
-     -->
+    
 
 
     <!-- End Grid/Pricing tables -->
