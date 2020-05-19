@@ -7,12 +7,15 @@ $bdd = new PDO('mysql:host=localhost;dbname=intmarket','root','root');
 if(isset($_POST)){
     $donne = $_POST;
 }
+$connexion = false;
 if(isset($donne['valider'])){
     $mail = strtolower($donne['mail']);
     $mdp = $donne['mdp'];
-    $reponde = $bdd->query("SELECT mail,mdp,idUtilisateur FROM intmarket.utilisateur");
-    while($trouve = $reponde->fetch()){
-        if($donne['mdp'] == ''|| $donne['mail' == '']) {
+    $reponde = $bdd->query("SELECT * FROM intmarket.utilisateur");
+    var_dump($reponde);
+    while($trouve = $reponde -> fetch()){
+        echo $trouve["idUtilisateur"];
+        if($donne['mdp'] == '' || $donne['mail' == '']) {
             $erreur = "case_vide";
             $connexion = false;
             $id_utilisateur = '';
