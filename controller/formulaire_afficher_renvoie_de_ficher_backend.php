@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 if (isset($_SESSION['status'])) {
     if ($_SESSION['status'] == "succes") {
         $status = "SUCCÈS";
@@ -11,5 +11,5 @@ if (isset($_SESSION['status'])) {
         $status = '';
     }
     echo "<label>$status</label>";
-    unset($_SESSION['status']);
 }
+$_SESSION['status'] ='';

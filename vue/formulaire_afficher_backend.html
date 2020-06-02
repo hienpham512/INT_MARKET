@@ -1,5 +1,113 @@
 <!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body,
+    h1 {
+        font-family: "Raleway", Arial, sans-serif
+    }
+    
+    h1 {
+        letter-spacing: 6px
+    }
+    
+    .w3-row-padding img {
+        margin-bottom: 12px
+    }
+    
+    .label {
+        padding: 8px;
+    }
+    
+    .success {
+        color: #4dc5da;
+        ;
+    }
+    /* Green */
+    
+    .info {
+        background-color: #2196F3;
+    }
+    /* Blue */
+    
+    .warning {
+        background-color: #ff9800;
+    }
+    /* Orange */
+    
+    .danger {
+        background-color: #f44336;
+    }
+    /* Red */
+    
+    .other {
+        background-color: #e7e7e7;
+        color: black;
+    }
+    /* Gray */
+</style>
+
+<body>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-content" style="max-width:1500px">
+        <div class="w3-row-padding w3-grayscale" style="margin-bottom:128px">
+            <div class="w3-half">
+                <!-- <img src="./photo_specific/logo_2.png" style="width:100%"> -->
+
+                <body background="./vue/photo_specific/logo_2.png">
+
+
+            </div>
+
+            <!-- Header -->
+            <header class="w3-panel w3-center " style="padding:128px 16px">
+                <h1 class="w3-xlarge">BACK END </h1>
+                <h1> </h1>
+
+                <div class="w3-padding-32">
+                    <div class="w3-bar w3-border">
+                        <div class="bouton_action">
+                            <a onclick="showUser(1)" class="w3-bar-item w3-button">AFFICHER</span></a>
+                            <a onclick="showUser(2)" class="w3-bar-item w3-button w3-light-grey">AJOUTER</a>
+                            <a onclick="showUser(3)" class="w3-bar-item w3-button">MODIFIER</a>
+                            <a onclick="showUser(4)" class="w3-bar-item w3-button w3-hide-small">SUPPRIMER</a>
+                            <a href="./index.php" class="w3-bar-item w3-button w3-hide-small">SITE</a>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Photo Grid -->
+
+            </body>
+
+</html>
+
+<!-- <nav class="navbar_backend">
+    <div class="bouton_action">
+        <button onclick="showUser(1)">AFFICHER</button><br>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <style>
@@ -7,7 +115,7 @@
             float: left;
             overflow: hidden;
         }
-
+        
         .dropdown .dropbtn {
             font-size: 16px;
             border: none;
@@ -18,11 +126,11 @@
             font-family: inherit;
             margin: 0;
         }
-
+        
         .dropdown:hover .dropbtn {
             background-color: white;
         }
-
+        
         .dropdown-content {
             display: none;
             position: absolute;
@@ -31,54 +139,57 @@
             box-shadow: 0px 8px 16px 0px rgb(43, 170, 255);
             z-index: 99999;
         }
+        
         .dropdown:hover .dropdown-content {
             display: block;
         }
-
     </style>
 </head>
+
 <body>
     <script>
         function showUser(str) {
-            if (str=="") {
-                document.getElementById("txtHint").innerHTML="";
+            if (str == "") {
+                document.getElementById("txtHint").innerHTML = "";
                 return;
             }
-            var xmlhttp=new XMLHttpRequest();
-            xmlhttp.onreadystatechange=function() {
-                if (this.readyState==4 && this.status==200) {
-                    document.getElementById("txtHint").innerHTML=this.responseText;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
                 }
             }
-            xmlhttp.open("GET","./controller/formulaire_afficher_backend.php?action_controller="+str,true);
+            xmlhttp.open("GET", "./controller/formulaire_afficher_backend.php?action_controller=" + str, true);
             xmlhttp.send();
         }
+
         function afficher(str) {
-            if (str=="") {
-                document.getElementById("txtHint").innerHTML="";
+            if (str == "") {
+                document.getElementById("txtHint").innerHTML = "";
                 return;
             }
-            var xmlhttp=new XMLHttpRequest();
-            xmlhttp.onreadystatechange=function() {
-                if (this.readyState==4 && this.status==200) {
-                    document.getElementById("txtHint").innerHTML=this.responseText;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
                 }
             }
-            xmlhttp.open("GET","./controller/formulaire_afficher_backend.php?table="+str,true);
+            xmlhttp.open("GET", "./controller/formulaire_afficher_backend.php?table=" + str, true);
             xmlhttp.send();
         }
+
         function modifier(n) {
             if (n == "") {
-                document.getElementById("txtHint").innerHTML="";
+                document.getElementById("txtHint").innerHTML = "";
                 return;
             }
-            var xmlhttp=new XMLHttpRequest();
-            xmlhttp.onreadystatechange=function() {
-                if (this.readyState==4 && this.status==200) {
-                    document.getElementById("txtHint").innerHTML=this.responseText;
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
                 }
             }
-            xmlhttp.open("GET","./controller/formulaire_afficher_backend.php?modifier="+n,true);
+            xmlhttp.open("GET", "./controller/formulaire_afficher_backend.php?modifier=" + n, true);
             xmlhttp.send();
         }
         // Close the dropdown if the user clicks outside of it
@@ -95,20 +206,22 @@
             }
         }
     </script>
-<nav class="navbar_backend">
-        <img src="./vue/photo_specific/logo.png" width="100px" height="100px"><br>
-        <div class="bouton_action" >
-            <button  onclick="showUser(1)">AFFICHER</button><br>
-            <button  onclick="showUser(2)">AJOUTER</button><br>
-            <button  onclick="showUser(3)">MODIFIER</button><br>
-            <button  onclick="showUser(4)">SUPRIMER</button><br>
-            <a  href="./index.php">SITE</a>
+    <nav class="navbar_backend">
+        <!-- <img src="./vue/photo_specific/logo.png" width="100px" height="100px"><br> -->
+        <div class="bouton_action">
+            <!-- <button onclick="showUser(1)">AFFICHER</button><br> -->
+            <!-- <button onclick="showUser(2)">AJOUTER</button><br>
+            <button onclick="showUser(3)">MODIFIER</button><br>
+            <button onclick="showUser(4)">SUPRIMER</button><br> -->
+            <!-- <a href="./index.php">SITE</a> -->
         </div>
         <div id="txtHint">
-        </div>
-    </nav>
-<?php
+            <?php
     include("./controller/formulaire_afficher_renvoie_de_ficher_backend.php");
 ?>
+        </div>
+    </nav>
+
 </body>
+
 </html>
