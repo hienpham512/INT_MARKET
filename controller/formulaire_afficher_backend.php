@@ -213,7 +213,6 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
         echo "<table border='1'><tr><th>idCategorie<th>nomCategorie<th>sousCategorie<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idCategorie = $trouve['idCategorie'];
-            var_dump($trouve['idCategorie']);
             echo "<tr><td>" . $trouve["idCategorie"] . "<td>" . $trouve["nomCategorie"] . "<td>" . $trouve["sousCategorie"] ."<td>"
                             . "<div class='dropdown'>
                                 <button onclick='myFunction()' class='dropbtn'>supprimer</button>
@@ -261,7 +260,6 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
                                         </form>
                                     </div>
                                 </div>" . "</td></tr>";
-            echo $trouve['idUtilisateur'];
         }
     }
 //afficher la table pour modifier d'élément avec index égal à id.

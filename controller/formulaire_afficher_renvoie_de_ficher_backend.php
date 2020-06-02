@@ -11,5 +11,5 @@ if (isset($_SESSION['status'])) {
         $status = '';
     }
     echo "<label>$status</label>";
-    unset($_SESSION['status']);
 }
+$_SESSION['status'] ='';
