@@ -1,6 +1,5 @@
 <?php
 session_start();
-var_dump($_GET);
 $bdd = new PDO('mysql:host=localhost;dbname=intmarket', 'root', 'root');
 //vérifier si l'utikisateur courant est un administrateur.
 if(isset($_SESSION["role"]) && $_SESSION["role"] == "administrateur") {
@@ -103,7 +102,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
         $select_sousCategorie .= "</select>";
         $select_nomCategorie .= "</select>";
         echo "<div>
-                <form action='/modele/backend.php' method='post'><br>
+                <form action='./modele/backend.php' method='post'><br>
                 <label>nomArticle : </label></label><input type='text' name='nomArticle'><br>
                 <label>prixArticle : </label><input type='number' min='1' name='prixArticle'><br>
                 <label>imageArticle: </label><input type='text' name='imageArticle'><br>
@@ -118,7 +117,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     } elseif ($action_administrateur == 2 && $table == 2) {
         $_SESSION['table_courant'] = "categorie";
         echo "<div>
-                    <form action='/modele/backend.php' method='post'>
+                    <form action='./modele/backend.php' method='post'>
                     <select name='nomCategorie'>
                     <option value='courses'>COURSES</option>
                     <option value='mode'>MODE</option>
@@ -133,7 +132,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     } elseif ($action_administrateur == 2 && $table == 3) {
         $_SESSION['table_courant'] = "commande";
         echo "<div>
-                    <form action='/modele/backend.php' method='post'>
+                    <form action='./modele/backend.php' method='post'>
                     <label>dateCommande</label><input type='date' name = 'date'>
                     <input type='number' name='idUtilisateur' min='1'>
                     <input type='submit' name='ajouter' value='insérer'>
@@ -143,7 +142,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     } elseif ($action_administrateur == 2 && $table == 4) {
         $_SESSION['table_courant'] = "utilisateur";
         echo "<div>
-                    <form action='/modele/backend.php' method='post'>
+                    <form action='./modele/backend.php' method='post'>
                     <label>nom : </label><input type='text' name='nom'><br>
                     <label>prenom : </label><input type='text' name='prenom'><br>
                     <label>email : </label><input type='text' name='mail'><br>
@@ -201,7 +200,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
                         <button onclick='myFunction()' class='dropbtn'>supprimer</button>
                         <div class='dropdown-content'>
                                 <h1>Vous êtes sûr de supprimer? $idArticle</h1>
-                                <form action='/modele/backend.php' method='post'>
+                                <form action='./modele/backend.php' method='post'>
                                     <input type='hidden' name='idArticle' value='$idArticle'>
                                     <button name='supprimer' value='$idArticle'>oui</button>
                                 </form>
@@ -220,7 +219,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
                                 <button onclick='myFunction()' class='dropbtn'>supprimer</button>
                                 <div id='myDropdown' class='dropdown-content'>
                                         <h1>Vous êtes sûr de supprimer? $idCategorie</h1>
-                                        <form action='/modele/backend.php' method='post'>
+                                        <form action='./modele/backend.php' method='post'>
                                             <input type='hidden' name='idCategorie' value='$idCategorie'>
                                             <button name='supprimer' value='$idCategorie'>oui</button>
                                         </form>
@@ -238,7 +237,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
                                 <button onclick='myFunction()' class='dropbtn'>supprimer</button>
                                 <div id='myDropdown' class='dropdown-content'>
                                         <h1>Vous êtes sûr de supprimer?$idCommande</h1>
-                                        <form action='/modele/backend.php' method='post'>
+                                        <form action='./modele/backend.php' method='post'>
                                             <input type='hidden' name='idCommande' value='$idCommande'>
                                             <button name='supprimer' value='oui'>oui</button>
                                         </form>
@@ -256,7 +255,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
                                 <button onclick='myFunction()' class='dropbtn'>supprimer</button>
                                 <div id='myDropdown' class='dropdown-content'>
                                         <h1>Vous êtes sûr de supprimer? ".$idUtilisateur."</h1>
-                                        <form action='/modele/backend.php' method='post'>
+                                        <form action='./modele/backend.php' method='post'>
                                             <input type='hidden' name='idUtilisateur' value='$idUtilisateur'>
                                             <button name='supprimer' value='oui'>oui</button>
                                         </form>
@@ -272,7 +271,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     $id_index_modifier = $_GET['modifier'];
     if ($table_courant == 'article') {
         $donne = $bdd->query("SELECT * FROM intmarket.article");
-        echo "<form action='/modele/backend.php' method='post'><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>action</th></tr>";
+        echo "<form action='./modele/backend.php' method='post'><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idArticle = $trouve['idArticle'];
             if ($trouve['idArticle'] == $id_index_modifier) {
@@ -299,7 +298,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
         echo "</table></form>";
     } elseif ($table_courant == "categorie") {
         $donne = $bdd->query("SELECT * FROM intmarket.categorie");
-        echo "<form action='/modele/backend.php' method='post'><table border='1'><tr><th>idCategorie<th>nomCategorie<th>sousCategorie<th>action</th></tr>";
+        echo "<form action='./modele/backend.php' method='post'><table border='1'><tr><th>idCategorie<th>nomCategorie<th>sousCategorie<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idCategorie = $trouve['idCategorie'];
             if ($trouve['idCategorie'] == $id_index_modifier) {
@@ -322,7 +321,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
         echo "</table></form>";
     } elseif ($table_courant == "commande") {
         $donne = $bdd->query("SELECT * FROM intmarket.commande");
-        echo "<form action='/modele/backend.php' method='post'><table border='1'><tr><th>idCommande<th>dateCommande<th>utilisateur_idUtilisateur<th>action</th></tr>";
+        echo "<form action='./modele/backend.php' method='post'><table border='1'><tr><th>idCommande<th>dateCommande<th>utilisateur_idUtilisateur<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idCommande = $trouve['idCommande'];
             $dateCommande = $trouve['dateCommande'];
@@ -347,7 +346,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
         echo "</table></form>";
     } elseif ($table_courant == 'utilisateur') {
         $donne = $bdd->query("SELECT * FROM intmarket.utilisateur");
-        echo "<form action='/modele/backend.php' method='post'><table border='1'><tr><th>idUtilisateur<th>nom<th>prenom<th>mail<th>mdp<th>addresse<th>panier<th>role<th>action</th></tr>";
+        echo "<form action='./modele/backend.php' method='post'><table border='1'><tr><th>idUtilisateur<th>nom<th>prenom<th>mail<th>mdp<th>addresse<th>panier<th>role<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idUtilisateur = $trouve['idUtilisateur'];
             if ($trouve['idUtilisateur'] == $id_index_modifier) {

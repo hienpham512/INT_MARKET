@@ -1,12 +1,12 @@
 <?php
 if (!isset($_SESSION['idUtilisateur'])) {
     echo "<div class='dropdown'>
-            <button class='dropbtn'><img src='/vue/photo_specific/photo_identifiant.png' width='100px'; height='30px'; class='photo_identifiant'>
+            <button class='dropbtn'><img src='./vue/photo_specific/photo_identifiant.png' width='100px'; height='30px'; class='photo_identifiant'>
                 <i class='fa fa-caret-down'></i>
             </button>
             <div class='dropdown-content'>
-                <a href='/index.php?action=formulaire_connexion' >connexion</a>
-                <a href='/index.php?action=formulaire_inscription' >inscription</a>
+                <a href='./index.php?action=formulaire_connexion' >connexion</a>
+                <a href='./index.php?action=formulaire_inscription' >inscription</a>
             </div>
         </div>";
 } else {
@@ -19,7 +19,7 @@ if (!isset($_SESSION['idUtilisateur'])) {
         $role = $trouve['role'];
     }
     if($role == "administrateur"){
-        $bouton_backend = "<a href='/index.php?action=backend'>Back-end</a>";
+        $bouton_backend = "<a href='./index.php?action=backend'>Back-end</a>";
         $_SESSION["role"] = "administrateur";
     }else{
         $bouton_backend = "";
