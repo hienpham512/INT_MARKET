@@ -1,23 +1,16 @@
 <?php
 session_start();
 $bdd = new PDO('mysql:host=localhost;dbname=intmarket', 'root', 'root');
-echo 'post : ';var_dump($_POST);
-echo "<br>";
 
-echo 'session : '; var_dump($_SESSION);
 if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administrateur'){
     //mettre le numéro pour les tables.
     if($_SESSION['table_courant'] == "article"){
-        $HTTP_GET_VARS['table'] = 1;
         $table = 1;
     }elseif ($_SESSION['table_courant'] == "categorie"){
-        $HTTP_GET_VARS['table'] = 2;
         $table = 2;
     }elseif ($_SESSION['table_courant'] == "commande"){
-        $HTTP_GET_VARS['table'] = 3;
         $table = 3;
     }elseif ($_SESSION['table_courant'] == "utilisateur"){
-        $HTTP_GET_VARS['table'] = 4;
         $table = 4;
     }
     echo "<br>";
@@ -287,7 +280,6 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         }
 
     }
-    var_dump($status);
     if($status == 'succes'){
         $_SESSION['status'] = 'succes';
     }elseif ($status == 'erreur'){
