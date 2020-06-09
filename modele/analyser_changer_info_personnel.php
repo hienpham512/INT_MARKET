@@ -40,23 +40,31 @@
             $nouveau_mdp = $_POST['nouveau_mdp'];
             $comf_nouveau_mdp = $_POST['comf_nouveau_mdp'];
 
-            $donne = $bdd ->query("SELECT mdp FROM intmarket.utilisateur WHERE mail = '$idUtilisateur'");
+            $donne = $bdd ->query("SELECT mdp FROM intmarket.utilisateur WHERE idUtilisateur = '$idUtilisateur'");
             while ($trouve = $donne->fetch()){
                 if($trouve['mdp'] == $mdp_actuel){
                     if($nouveau_mdp == $comf_nouveau_mdp){
                         $sql = "UPDATE intmarket.utilisateur SET 
                                 mdp = '$nouveau_mdp'
-                    WHERE idUtilisateur = '$idUtilisateur';";
+                            WHERE idUtilisateur = '$idUtilisateur';";
                         if($bdd -> exec($sql) == true){
                             $_SESSION['status'] = "succes";
                         }else{
                             $_SESSION['status'] = "erreur";
                         }
-                        header("location : ./index.php?action=votre_compte");
+                        break;
+                    }else{
+                        $_SESSION['status'] = "erreur";
+                        $_SESSION['erreur'] = 'comf_mdp';
+                        break;
                     }
+                }else{
+                    $_SESSION['status'] = "erreur";
+                    $_SESSION['erreur'] = 'mdp';
+                    break;
                 }
             }
-
         }
     }
 ?>
+<meta http-equiv="refresh" content="0;URL=../index.php?action=votre_compte">

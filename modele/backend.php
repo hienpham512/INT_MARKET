@@ -84,6 +84,8 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         $panier = $_POST['panier'];
         $role = $_POST['role'];
         $addresse = $_POST['addresse'];
+        $dateDeNaissance = $_POST['dateDaNaissance'];
+        $civilite = $_POST['civilite'];
 
         //verifier si le mail est été pris par un autre utilisateur.
         $donne = $bdd ->query("SELECT * FROM intmarket.utilisateur");
@@ -96,13 +98,15 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         }
         if (!isset($status)){
             $sql = "UPDATE intmarket.utilisateur SET 
+                                 civilite = '$civilite',
                                  nom = '$nom',
                                  prenom = '$prenom',
                                  mail = '$mail',
                                  mdp = '$mdp',
                                  panier = '',
                                  addresse = '$addresse',
-                                 role = '$role'
+                                 role = '$role',
+                                 dateDeNaissance = '$dateDeNaissance'
                                  WHERE utilisateur.idUtilisateur = '$idUtilisateur';";
             if($bdd ->exec($sql) == true){
                 $status = "succes";
@@ -253,6 +257,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                 break;
             }
         }
+        $civilite = $_POST['civilite'];
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
         $mail = $_POST['mail'];
@@ -260,6 +265,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         $panier = $_POST['panier'];
         $role = $_POST['role'];
         $addresse = $_POST['addresse'];
+        $dateDeNaissance = $_POST['dateDaNaissance'];
         $donne = $bdd ->query("SELECT * FROM intmarket.utilisateur");
         while ($trouve = $donne ->fetch()){
             if($trouve['mail'] == $mail){
@@ -270,8 +276,8 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         }
         if(!isset($erreur) || !isset($status)){
             $sql = "INSERT INTO intmarket.utilisateur
-                (nom, prenom, mail, mdp, addresse, panier, role)
-                 VALUES ('$nom','$prenom','$mail','$mdp','$addresse','$panier','$role');";
+                (civilite,nom, prenom,dateDeNaissance, mail, mdp, addresse, panier, role)
+                 VALUES ('$civilite','$nom','$prenom','$dateDeNaissance','$mail','$mdp','$addresse','$panier','$role');";
             if($bdd ->exec($sql) == true){
                 $status = "succes";
             }else{
