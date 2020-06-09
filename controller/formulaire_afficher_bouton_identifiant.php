@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!isset($_SESSION['idUtilisateur'])) {
     echo "<div class='dropdown'>
             <button class='dropbtn'><img src='./vue/photo_specific/photo_identifiant.png' width='100px'; height='30px'; class='photo_identifiant'>
@@ -30,10 +31,10 @@ if (!isset($_SESSION['idUtilisateur'])) {
             </button>
 
             <div class='dropdown-content'>
-                <a href='./controller/profil_utilisateur_courant.php?action=votre_compte' >Votre compte</a>
-                <a href='./controller/profil_utcilisateur_courant.php?action=votre_commande' >Votre commande</a>
+                <a href='../index.php?action=votre_compte' >Votre compte</a>
+                <a href='../controller/profil_utcilisateur_courant.php?action=votre_commande' >Votre commande</a>
                 $bouton_backend
-                <a href='./controller/profil_utilisateur_courant.php?action=deconnecter' >Déconnecter <img src='./vue/photo_specific/deconnecter.png' width='15px'; height='15px'></a>
+                <a href='/controller/formulaire_profil_utilisateur_courant.php?action=deconnecter' >Déconnecter <img src='./vue/photo_specific/deconnecter.png' width='15px'; height='15px'></a>
             </div>
           </div>";
 }

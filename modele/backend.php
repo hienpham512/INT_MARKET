@@ -284,7 +284,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         $_SESSION['status'] = 'succes';
     }elseif ($status == 'erreur'){
         if($erreur == 'mail'){
-            $_SESSION['status'] = "erreur_$erreur";
+            $_SESSION['status'] = "erreur_mail";
         }else{
             $_SESSION['status'] = "erreur";
         }
