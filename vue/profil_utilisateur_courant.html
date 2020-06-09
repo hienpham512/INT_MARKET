@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INTMARKET accueil</title>
+    <link rel="stylesheet" href="../vue/style_espace_profil.css">
+</head>
+<body>
+<div class="header">
+    <?php
+        include("./vue/formulaire_navbar.html"); ?>
+    <div class="index">
+        <a href="../index.php">Accueil</a>  ><label>Mon espace personnel</label>
+    </div>
+    <div class="espace_personnel">
+        <h2>Mon espace personnel</h2>
+        <div class="block_espace">
+            <img src="../vue/photo_specific/id_identifiant.png" height="40px" width="70px">
+        </div>
+    </div>
+</div>
+<div class="principal">
+    <div class="point_fidelite">
+        <?php
+            include("./controller/formulaire_profil_utilisateur_courant.php");
+        ?>
+    </div>
+    <div class="info_personel">
+
+    </div>
+</div>
+<div >
+    <fieldset class="footer_brand">
+        <label CLASS="nom_site">INT'MARKET</label>
+        <label class="slogan">ACHERTER SANS BOUGER</label>
+    </fieldset>
+</div>
+</body>
+</html>
