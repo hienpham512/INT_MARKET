@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>INTMARKET accueil</title>
+    <link rel="stylesheet" href="./vue/style_espace_profil.css">
+</head>
+
+<body>
+    <div class="header">
+        <?php
+        include("./vue/formulaire_navbar.html"); ?>
+            <div class="index">
+                <a href="./index.php">Accueil</a> ><label>Homme</label>
+            </div>
+            <div class="espace_personnel">
+                <h2>Homme</h2>
+                <div class="block_espace"></div>
+            </div>
+    </div>
+    </div>
+
+</body>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+</html>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    .w3-sidebar a {
+        font-family: "Roboto", sans-serif
+    }
+    
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .w3-wide {
+        font-family: "Montserrat", sans-serif;
+    }
+</style>
+
+<body class="w3-content" style="max-width:1550px">
+
+    <!-- Product grid -->
+    <div class="w3-col l3 s6">
+        <div class="w3-container">
+            <img src="./vue/photo_specific/1.jpg" style="width:50%">
+            <p>jhzec cuzec ei<br><b>$24.99</b></p>
+        </div>
+        <div class="w3-container">
+            <img src="./vue/photo_specific/2.jpg" style="width:50%">
+            <p>Mega Ripped Jeans<br><b>$19.99</b></p>
+        </div>
+    </div>
+
+    <div class="w3-col l3 s6">
+        <div class="w3-container">
+            <div class="w3-display-container">
+                <img src="./vue/photo_specific/3.png" style="width:50%">
+                <span class="w3-tag w3-display-topleft">New</span>
+                <div class="w3-display-middle w3-display-hover">
+                    <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            <p>Mega Ripped Jeans<br><b>$19.99</b></p>
+        </div>
+        <div class="w3-container">
+            <img src="./vue/photo_specific/4.png" style="width:50%">
+            <p>Washed Skinny Jeans<br><b>$20.50</b></p>
+        </div>
+    </div>
+
+    <div class="w3-col l3 s6">
+        <div class="w3-container">
+            <img src="./vue/photo_specific/5.png" style="width:50%">
+            <p>Washed Skinny Jeans<br><b>$20.50</b></p>
+        </div>
+        <div class="w3-container">
+            <div class="w3-display-container">
+                <img src="./vue/photo_specific/6.jpg" style="width:50%">
+                <span class="w3-tag w3-display-topleft">Sale</span>
+                <div class="w3-display-middle w3-display-hover">
+                    <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            <p>Vintage Skinny Jeans<br><b class="w3-text-red">$14.99</b></p>
+        </div>
+    </div>
+
+    <div class="w3-col l3 s6">
+        <div class="w3-container">
+            <img src="./vue/photo_specific/7.jpg" style="width:50%">
+            <p>Vintage Skinny Jeans<br><b>$14.99</b></p>
+        </div>
+        <div class="w3-container">
+            <img src="./vue/photo_specific/8.jpg" style="width:50%">
+            <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
+        </div>
+    </div>
+    </div>
+
+
+    <script>
+        // Accordion 
+        function myAccFunc() {
+            var x = document.getElementById("demoAcc");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        // Click on the "Jeans" link on page load to open the accordion for demo purposes
+        document.getElementById("myBtn").click();
+
+
+        // Open and close sidebar
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>
