@@ -4,8 +4,6 @@
      width: 100px; 
      
 }
-
-.indent { text-indent: 533px; }
 </style>
 
 
@@ -46,27 +44,27 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     //action afficher
     if ($action_administrateur == 1 && $table == 1) {
         $donne = $bdd->query("SELECT * FROM intmarket.article");
-        echo "<br/><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>descriptionArticle<th>quantite<th>categorie_idCategorie</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>descriptionArticle<th>quantite<th>categorie_idCategorie</th></tr>";
         while ($trouve = $donne->fetch()) {
             echo "<tr><td>" . $trouve["idArticle"] . "<td>" . $trouve["nomArticle"] . "<td>" . $trouve["prixArticle"] . "<td>" . $trouve["imageArticle"] . "<td>" . $trouve["descriptionArticle"] . "<td>" . $trouve["quantite"] . "<td>" . $trouve["categorie_idCategorie"] . "</td></tr>";
         }
     } elseif ($action_administrateur == 1 && $table == 2) {
         $donne = $bdd->query("SELECT * FROM intmarket.categorie");
-        echo "<br/><center><table border='1'><tr><th>idCategorie<th>nomCategorie<th>sousCategorie</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idCategorie<th>nomCategorie<th>sousCategorie</th></tr>";
         while ($trouve = $donne->fetch()) {
             echo "<tr><td>" . $trouve["idCategorie"] . "<td>" . $trouve["nomCategorie"] . "<td>" . $trouve["sousCategorie"] . "</td></tr>";
         }
     } elseif ($action_administrateur == 1 && $table == 3) {
         $donne = $bdd->query("SELECT * FROM intmarket.commande");
-        echo "<br/><center><table border='1'><tr><th>idCommande<th>dateCommande<th>utilisateur_idUtilisateur</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idCommande<th>dateCommande<th>utilisateur_idUtilisateur</th></tr>";
         while ($trouve = $donne->fetch()) {
             echo "<tr><td>" . $trouve["idCommande"] . "<td>" . $trouve["dateCommande"] . "<td>" . $trouve["utilisateur_idUtilisateur"] . "</td></tr>";
         }
     } elseif ($action_administrateur == 1 && $table == 4) {
         $donne = $bdd->query("SELECT * FROM intmarket.utilisateur");
-        echo "<br/><center><table border='1'><tr><th>idUtilisateur<th>nom<th>prenom<th>mail<th>mdp<th>addresse<th>panier<th>role</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idUtilisateur<th>civilite<th>nom<th>prenom<th>dateDeNaissance<th>mail<th>mdp<th>addresse<th>panier<th>role</th></tr>";
         while ($trouve = $donne->fetch()) {
-            echo "<tr><td>" . $trouve["idUtilisateur"] . "<td>" . $trouve["nom"] . "<td>" . $trouve["prenom"] . "<td>" . $trouve["mail"] . "<td>" . $trouve["mdp"] . "<td>" . $trouve["addresse"] . "<td>" . $trouve["panier"] . "<td>" . $trouve["role"] . "</td></tr>";
+            echo "<tr><td>" . $trouve["idUtilisateur"] . "<td>" . $trouve["civilite"] ."<td>" . $trouve["nom"] . "<td>" . $trouve["prenom"] ."<td>" . $trouve["dateDeNaissance"] . "<td>" . $trouve["mail"] . "<td>" . $trouve["mdp"] . "<td>" . $trouve["addresse"] . "<td>" . $trouve["panier"] . "<td>" . $trouve["role"] . "</td></tr>";
         }
         echo "</table>";
         //action ajouter
@@ -152,10 +150,23 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
         </div>";
     } elseif ($action_administrateur == 2 && $table == 4) {
         $_SESSION['table_courant'] = "utilisateur";
+        $an_actuel = intval(date('Y'));
+        $max_an = $an_actuel - 10;
+        $min_an = $an_actuel - 110;
+        $max_date_de_naissance = date("$max_an-m-d");
+        $min_date_de_naissance = date("$min_an-m-d");
         echo "<div  class='center-div'>
                     <form action='./modele/backend.php' method='post'>
+                    <label>Civilité : </label>
+                                <select name='civilite'>
+                                    <option value='Mlle'>Mlle</option>
+                                    <option value='Mme'>Mme</option>
+                                    <option value='M'>M.</option>
+                                </select><br>
                     <label>nom : </label><input type='text' name='nom'><br>
                     <label>prenom : </label><input type='text' name='prenom'><br>
+                    <label>Date de naissance</label><br>
+                    <input type='date' max='$max_date_de_naissance' min='$min_date_de_naissance' name='date_de_naissance' ><br>
                     <label>email : </label><input type='text' name='mail'><br>
                     <label>mot de pass : </label><input type='text' name='mdp'><br>
                     <label>addresse : </label><input type='text' name='addresse'><br>
@@ -168,7 +179,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
         //action modifier
     }elseif ($action_administrateur == 3 && $table == 1) {
         $donne = $bdd->query("SELECT * FROM intmarket.article");
-        echo "<br/><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>action</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>action</th></tr>";
         $_SESSION['table_courant'] = "article";
         while ($trouve = $donne->fetch()) {
             $idArticle = $trouve['idArticle'];
@@ -177,7 +188,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     } elseif ($action_administrateur == 3 && $table == 2) {
         $_SESSION['table_courant'] = "categorie";
         $donne = $bdd->query("SELECT * FROM intmarket.categorie");
-        echo "<br/><center><table border='1'><tr><th>idCategorie<th>nomCategorie<th>sousCategorie<th>action</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idCategorie<th>nomCategorie<th>sousCategorie<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idCategorie = $trouve['idCategorie'];
             echo "<tr><td>" . $trouve["idCategorie"] . "<td>" . $trouve["nomCategorie"] . "<td>" . $trouve["sousCategorie"] . "<td>" . "<div><button onclick='modifier($idCategorie)'>modifier</button></div>" . "</td></tr>";
@@ -185,7 +196,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     } elseif ($action_administrateur == 3 && $table == 3) {
         $_SESSION['table_courant'] = "commande";
         $donne = $bdd->query("SELECT * FROM intmarket.commande");
-        echo "<br/><center><table border='1'><tr><th>idCommande<th>dateCommande<th>utilisateur_idUtilisateur<th>action</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idCommande<th>dateCommande<th>utilisateur_idUtilisateur<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idCommande = $trouve['idCommande'];
             echo "<tr><td>" . $trouve["idCommande"] . "<td>" . $trouve["dateCommande"] . "<td>" . $trouve["utilisateur_idUtilisateur"] . "<td>" . "<div><button onclick='modifier($idCommande)'>modifier</button></div>" . "</td></tr>";
@@ -193,16 +204,16 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     } elseif ($action_administrateur == 3 && $table == 4) {
         $_SESSION['table_courant'] = "utilisateur";
         $donne = $bdd->query("SELECT * FROM intmarket.utilisateur");
-        echo "<br/><center><table border='1'><tr><th>idUtilisateur<th>nom<th>prenom<th>mail<th>mdp<th>addresse<th>panier<th>role<th>action</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idUtilisateur<th>civilite<th>nom<th>prenom<th>dateDeNaissance<th>mail<th>mdp<th>addresse<th>panier<th>role<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idUtilisateur = $trouve['idUtilisateur'];
-            echo "<tr><td>" . $trouve["idUtilisateur"] . "<td>" . $trouve["nom"] . "<td>" . $trouve["prenom"] . "<td>" . $trouve["mail"] . "<td>" . $trouve["mdp"] . "<td>" . $trouve["addresse"] . "<td>" . $trouve["panier"] . "<td>" . $trouve["role"] . "<td>" . "<div><button onclick='modifier($idUtilisateur)'>modifier</button></div>" . "</td></tr>";
+            echo "<tr><td>" . $trouve["idUtilisateur"] . "<td>" . $trouve["civilite"] ."<td>" . $trouve["nom"] . "<td>" . $trouve["prenom"] ."<td>" . $trouve["dateDeNaissance"] . "<td>" . $trouve["mail"] . "<td>" . $trouve["mdp"] . "<td>" . $trouve["addresse"] . "<td>" . $trouve["panier"] . "<td>" . $trouve["role"] . "<td>" . "<div><button onclick='modifier($idUtilisateur)'>modifier</button></div>" . "</td></tr>";
         }
         //action supprimer
     } elseif ($action_administrateur == 4 && $table == 1) {
         $_SESSION['table_courant'] = "article";
         $donne = $bdd->query("SELECT * FROM intmarket.article");
-        echo "<br/><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>action</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idArticle = $trouve['idArticle'];
 
@@ -221,7 +232,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     }elseif ($action_administrateur == 4 && $table == 2) {
         $_SESSION['table_courant'] = "categorie";
         $donne = $bdd->query("SELECT * FROM intmarket.categorie");
-        echo "<br/><center><table border='1'><tr><th>idCategorie<th>nomCategorie<th>sousCategorie<th>action</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idCategorie<th>nomCategorie<th>sousCategorie<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idCategorie = $trouve['idCategorie'];
             echo "<tr><td>" . $trouve["idCategorie"] . "<td>" . $trouve["nomCategorie"] . "<td>" . $trouve["sousCategorie"] ."<td>"
@@ -239,7 +250,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     }elseif ($action_administrateur == 4 && $table == 3) {
         $_SESSION['table_courant'] = "commande";
         $donne = $bdd->query("SELECT * FROM intmarket.commande");
-        echo "<br/><center><table border='1'><tr><th>idCommande<th>dateCommande<th>utilisateur_idUtilisateur<th>action</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idCommande<th>dateCommande<th>utilisateur_idUtilisateur<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idCommande = $trouve['idCommande'];
             echo "<tr><td>" . $trouve["idCommande"] . "<td>" . $trouve["dateCommande"] . "<td>" . $trouve["utilisateur_idUtilisateur"]
@@ -257,10 +268,10 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     }elseif($action_administrateur == 4 && $table == 4) {
         $_SESSION['table_courant'] = "utilisateur";
         $donne = $bdd->query("SELECT * FROM intmarket.utilisateur");
-        echo "<br/><center><table border='1'><tr><th>idUtilisateur<th>nom<th>prenom<th>mail<th>mdp<th>addresse<th>panier<th>role<th>action</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idUtilisateur<th>civilite<th>nom<th>prenom<th>dateDeNaissance<th>mail<th>mdp<th>addresse<th>panier<th>role<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idUtilisateur = $trouve['idUtilisateur'];
-            echo "<tr><td>" .$idUtilisateur."<td>" . $trouve["nom"] . "<td>" . $trouve["prenom"] . "<td>" . $trouve["mail"] . "<td>" . $trouve["mdp"] . "<td>" . $trouve["addresse"] . "<td>" . $trouve["panier"] . "<td>" . $trouve["role"] . "<td>"
+            echo "<tr><td>" .$idUtilisateur."<td>" .$trouve["civilite"] ."<td>" . $trouve["nom"] . "<td>" . $trouve["prenom"] ."<td>" .$trouve["dateDeNaissance"] . "<td>" . $trouve["mail"] . "<td>" . $trouve["mdp"] . "<td>" . $trouve["addresse"] . "<td>" . $trouve["panier"] . "<td>" . $trouve["role"] . "<td>"
                             . "<div class='dropdown'>
                                 <button onclick='myFunction()' class='dropbtn'>supprimer</button>
                                 <div id='myDropdown' class='dropdown-content'>
@@ -280,7 +291,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     $id_index_modifier = $_GET['modifier'];
     if ($table_courant == 'article') {
         $donne = $bdd->query("SELECT * FROM intmarket.article");
-        echo "<form action='./modele/backend.php' method='post'><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>action</th></tr>";
+        echo "<form action='./modele/backend.php' method='post'><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idArticle = $trouve['idArticle'];
             if ($trouve['idArticle'] == $id_index_modifier) {
@@ -307,7 +318,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
         echo "</table></form>";
     } elseif ($table_courant == "categorie") {
         $donne = $bdd->query("SELECT * FROM intmarket.categorie");
-        echo "<form action='./modele/backend.php' method='post'><table border='1'><tr><th>idCategorie<th>nomCategorie<th>sousCategorie<th>action</th></tr>";
+        echo "<form action='./modele/backend.php' method='post'><center><table border='1'><tr><th>idCategorie<th>nomCategorie<th>sousCategorie<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idCategorie = $trouve['idCategorie'];
             if ($trouve['idCategorie'] == $id_index_modifier) {
@@ -330,7 +341,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
         echo "</table></form>";
     } elseif ($table_courant == "commande") {
         $donne = $bdd->query("SELECT * FROM intmarket.commande");
-        echo "<form action='./modele/backend.php' method='post'><table border='1'><tr><th>idCommande<th>dateCommande<th>utilisateur_idUtilisateur<th>action</th></tr>";
+        echo "<form action='./modele/backend.php' method='post'><center><table border='1'><tr><th>idCommande<th>dateCommande<th>utilisateur_idUtilisateur<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idCommande = $trouve['idCommande'];
             $dateCommande = $trouve['dateCommande'];
@@ -354,15 +365,26 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
         }
         echo "</table></form>";
     } elseif ($table_courant == 'utilisateur') {
+        $an_actuel = intval(date('Y'));
+        $max_an = $an_actuel - 10;
+        $min_an = $an_actuel - 110;
+        $max_date_de_naissance = date("$max_an-m-d");
+        $min_date_de_naissance = date("$min_an-m-d");
         $donne = $bdd->query("SELECT * FROM intmarket.utilisateur");
-        echo "<form action='./modele/backend.php' method='post'><table border='1'><tr><th>idUtilisateur<th>nom<th>prenom<th>mail<th>mdp<th>addresse<th>panier<th>role<th>action</th></tr>";
+        echo "<form action='./modele/backend.php' method='post'><center><table border = '1'><tr><th>idUtilisateur<th>civilite<th>nom<th>prenom<th>dateDeNaissance<th>mail<th>mdp<th>addresse<th>panier<th>role<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idUtilisateur = $trouve['idUtilisateur'];
             if ($trouve['idUtilisateur'] == $id_index_modifier) {
                 echo "<tr>
                         <td>" . $trouve['idUtilisateur'] . "<input type='hidden' name='idUtilisateur' value='" . $trouve['idUtilisateur'] . "'></td>
+                        <td><select name='civilite'>
+                                    <option value='Mlle'>Mlle</option>
+                                    <option value='Mme'>Mme</option>
+                                    <option value='M'>M.</option>
+                                </select></td>
                         <td><input type='text' name='nom' value='" . $trouve['nom'] . "'></td>
                         <td><input type='text' name='prenom' value='" . $trouve['prenom'] . "'></td>
+                        <td><input type='date'  max='$max_date_de_naissance' min='$min_date_de_naissance' name='dateDeNaissance' value='" . $trouve['dateDeNaissance'] . "'></td>
                         <td><input type='text' name='mail' value='" . $trouve['mail'] . "'></td>
                         <td><input type='password' name='mdp' value='" . $trouve['mdp'] . "'></td>
                         <td><input type='text' name='addresse' value='" . $trouve['addresse'] . "'></td>
@@ -377,7 +399,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
                                 </div></td>
                         </tr>";
             } else {
-                echo "<tr><td>" . $trouve["idUtilisateur"] . "<td>" . $trouve["nom"] . "<td>" . $trouve["prenom"] . "<td>" . $trouve["mail"] . "<td>" . $trouve["mdp"] . "<td>" . $trouve["addresse"] . "<td>" . $trouve["panier"] . "<td>" . $trouve["role"] . "<td>" . "<div><a onclick='modifier($idUtilisateur)'>modifier</a></div>" . "</td></tr>";
+                echo "<tr><td>" . $trouve["idUtilisateur"] . "<td>" . $trouve["civilite"] . "<td>" . $trouve["nom"] . "<td>" . $trouve["prenom"] . "<td>" . $trouve["dateDeNaissance"] . "<td>" . $trouve["mail"] . "<td>" . $trouve["mdp"] . "<td>" . $trouve["addresse"] . "<td>" . $trouve["panier"] . "<td>" . $trouve["role"] . "<td>" . "<div><a onclick='modifier($idUtilisateur)'>modifier</a></div>" . "</td></tr>";
             }
         }
         echo "</table></form>";

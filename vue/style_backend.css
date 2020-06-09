@@ -1,8 +1,45 @@
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-.w3-sidebar {width: 120px;background: #222;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+body,
+h1 {
+    font-family: "Raleway", Arial, sans-serif
+}
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown{
+    display: block;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: black;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+.dropbtn{
+    display: block;
+    margin: 15px;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgb(43, 170, 255);
+    z-index: 99999;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.indent{
+    margin-left: 40%;
+}
