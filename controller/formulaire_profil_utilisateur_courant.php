@@ -3,10 +3,10 @@ if (isset($_GET)) {
     if ($_GET['action'] == "deconnecter") {
         session_start();
         session_destroy();
-        header("location: ../index.php");
+        header("location: ./index.php");
     }elseif ($_GET['action'] == "votre_compte") {
         if (!isset($_SESSION['idUtilisateur'])) {
-            header("location: ../index.php?action=formulaire_connexion&erreur=reconnexion");
+            header("location: ./index.php?action=formulaire_connexion&erreur=reconnexion");
         } else {
             $idUtilisateur = $_SESSION['idUtilisateur'];
             $bdd = new PDO('mysql:host=localhost;dbname=intmarket', 'root', 'root');
@@ -20,7 +20,7 @@ if (isset($_GET)) {
                 echo "<div class='information_utilisateur'>
                         <fieldset class='info_utilisateur'>
                             <legend><h2>Mes information</h2></legend>
-                            <form method='post' action='../modele/analyser_changer_info_personnel.php'>
+                            <form method='post' action='./modele/analyser_changer_info_personnel.php'>
                                 <label><h5>Civilité</h5></label><br>
                                 <select name='civilite'>
                                     <option value='Mlle'>Mlle</option>
@@ -45,7 +45,7 @@ if (isset($_GET)) {
                 echo "<div class='changer_mdp'>
                         <fieldset class='info_utilisateur'>
                             <legend><h2>Changer mot de pass</h2></legend>
-                            <form method='post' action='../modele/analyser_changer_info_personnel.php'>
+                            <form method='post' action='./modele/analyser_changer_info_personnel.php'>
                                     <label><h4>Mot de pass actuel</h4></label><br>
                                     <input type='password' name='mdp_actuel'>
                                     <label><h4>Nouveau mot de pass</h4></label><br>

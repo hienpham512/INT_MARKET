@@ -52,7 +52,7 @@
                         }else{
                             $_SESSION['status'] = "erreur";
                         }
-                        header("location : ../index.php?action=votre_compte");
+                        header("location : ./index.php?action=votre_compte");
                     }
                 }
             }
