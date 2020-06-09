@@ -5,7 +5,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=intmarket', 'root', 'root');
 $donne = $_POST;
 if (isset($donne['valider'])) {
     $mail = strtolower($donne['mail']);
-    $mdp = $donne['mdp'];
+    $mdp = sha1($donne['mdp']);
     $nom = $donne['nom'];
     $prenom = $donne['prenom'];
     $addresse = $donne['addresse'];
