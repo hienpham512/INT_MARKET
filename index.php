@@ -17,6 +17,9 @@
         case 'backend':
             include('./vue/formulaire_afficher_backend.html');
             break;
+        case 'votre_compte':
+            include('./vue/profil_utilisateur_courant.html');
+            break;
         default:
             include('./controller/erreur.php');
             break;

@@ -32,7 +32,7 @@ if(isset($donne['valider'])){
     }else{
         if(isset($donne['reconnexion'])){
             $_SESSION['idUtilisateur'] = $id_utilisateur;
-            header("location: ../index.php?action=profil_utilisateur_courant");
+            header("location: ../index.php?action=votre_compte");
         }else{
             $_SESSION['idUtilisateur'] = $id_utilisateur;
             header('location: ../index.php');
