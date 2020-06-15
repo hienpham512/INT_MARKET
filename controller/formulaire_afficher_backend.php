@@ -166,7 +166,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
                     <label>nom : </label><input type='text' name='nom'><br>
                     <label>prenom : </label><input type='text' name='prenom'><br>
                     <label>Date de naissance</label><br>
-                    <input type='date' max='$max_date_de_naissance' min='$min_date_de_naissance' name='date_de_naissance' ><br>
+                    <input type='date' max='$max_date_de_naissance' min='$min_date_de_naissance' name='dateDeNaissance' ><br>
                     <label>email : </label><input type='text' name='mail'><br>
                     <label>mot de pass : </label><input type='text' name='mdp'><br>
                     <label>addresse : </label><input type='text' name='addresse'><br>

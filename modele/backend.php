@@ -84,7 +84,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         $panier = $_POST['panier'];
         $role = $_POST['role'];
         $addresse = $_POST['addresse'];
-        $dateDeNaissance = $_POST['dateDaNaissance'];
+        $dateDeNaissance = $_POST['dateDeNaissance'];
         $civilite = $_POST['civilite'];
 
         //verifier si le mail est été pris par un autre utilisateur.
@@ -96,7 +96,18 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                 break;
             }
         }
-        if (!isset($status)){
+        if($dateDeNaissance == ''){
+            $sql = "UPDATE intmarket.utilisateur SET 
+                                 civilite = '$civilite',
+                                 nom = '$nom',
+                                 prenom = '$prenom',
+                                 mail = '$mail',
+                                 mdp = '$mdp',
+                                 panier = '',
+                                 addresse = '$addresse',
+                                 role = '$role'
+                                 WHERE utilisateur.idUtilisateur = '$idUtilisateur';";
+        }else{
             $sql = "UPDATE intmarket.utilisateur SET 
                                  civilite = '$civilite',
                                  nom = '$nom',
@@ -108,11 +119,14 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                                  role = '$role',
                                  dateDeNaissance = '$dateDeNaissance'
                                  WHERE utilisateur.idUtilisateur = '$idUtilisateur';";
+        }
+        if (!isset($status)){
             if($bdd ->exec($sql) == true){
                 $status = "succes";
             }else{
                 $status = "erreur";
             }
+            var_dump($status);
         }
     }elseif (isset($_POST['supprimer']) && $_SESSION['table_courant'] == "article"){
         $idArticle = intval($_POST["idArticle"]);
@@ -265,7 +279,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         $panier = $_POST['panier'];
         $role = $_POST['role'];
         $addresse = $_POST['addresse'];
-        $dateDeNaissance = $_POST['dateDaNaissance'];
+        $dateDeNaissance = $_POST['dateDeNaissance'];
         $donne = $bdd ->query("SELECT * FROM intmarket.utilisateur");
         while ($trouve = $donne ->fetch()){
             if($trouve['mail'] == $mail){
@@ -286,7 +300,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         }
 
     }
-    if($status == 'succes'){
+    /*if($status == 'succes'){
         $_SESSION['status'] = 'succes';
     }elseif ($status == 'erreur'){
         if($erreur == 'mail'){
@@ -294,7 +308,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         }else{
             $_SESSION['status'] = "erreur";
         }
-    }
-    header("location: ../index.php?action=backend");
+    }*/
+   header("location: ../index.php?action=backend");
 }
 ?>
