@@ -16,11 +16,15 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
     echo "<br>";
     //si la table qu'il veux modifier est "article".
     if(isset($_POST['modifier']) && $_SESSION["table_courant"] == "article") {
+        $ret = is_uploaded_file($_FILES['imageArticle']['tmp_name']);
+        $imageArticle = file_get_contents($_FILES['imageArticle']['tmp_name']);
+        $imageArticle = addslashes($imageArticle);
+
         $idArticle = intval($_POST['idArticle']);
         $nomArticle = $_POST['nomArticle'];
         $prixArticle = intval($_POST['prixArticle']);
         $descriptionArticle = $_POST['descriptionArticle'];
-        $imageArticle = $_POST['imageArticle'];
+
         $quantite = intval($_POST['quantite']);
         $categorie_idCategorie = intval($_POST['categorie_idCategorie']);
 
@@ -178,10 +182,12 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
             }
         }
         if(!isset($erreur)){
+            $imageArticle = file_get_contents($_FILES['imageArticle']['tmp_name']);
+            $imageArticle = addslashes($imageArticle);
+
             $nomArticle = $_POST['nomArticle'];
             $prixArticle = intval($_POST['prixArticle']);
             $descriptionArticle = $_POST['descriptionArticle'];
-            $imageArticle = $_POST['imageArticle'];
             $quantite = intval($_POST['quantite']);
             $nomCategorie = $_POST['nomCategorie'];
             $sousCategorie = $_POST['sousCategorie'];
