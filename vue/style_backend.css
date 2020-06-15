@@ -19,7 +19,7 @@ h1 {
     margin: 0;
 }
 .dropbtn{
-    display: block;
+
     margin: 15px;
 }
 
@@ -41,5 +41,5 @@ h1 {
     display: block;
 }
 .indent{
-    margin-left: 40%;
+    margin-left: 50%;
 }

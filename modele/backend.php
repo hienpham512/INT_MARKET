@@ -300,15 +300,6 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         }
 
     }
-    /*if($status == 'succes'){
-        $_SESSION['status'] = 'succes';
-    }elseif ($status == 'erreur'){
-        if($erreur == 'mail'){
-            $_SESSION['status'] = "erreur_mail";
-        }else{
-            $_SESSION['status'] = "erreur";
-        }
-    }*/
    header("location: ../index.php?action=backend");
 }
 ?>

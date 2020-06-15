@@ -6,18 +6,44 @@
 }
 </style>
 
-
 <?php
 session_start();
+if(isset($_GET['action_controller']) ){
+    echo "<style>
+        #btn_".$_GET['action_controller']."{
+        color: blue;
+        }
+    </style>";
+}elseif(isset($_SESSION['action_administrateur'])){
+    echo "<style>
+        #btn_".$_SESSION['action_administrateur']."{
+        color: blue;
+        }
+        </style>";
+}
+
+if(isset($_GET['table'])){
+    echo "<style>
+            #t_".$_GET['table']."{
+            color: blue;
+            }
+            </style>";
+}elseif(isset($_SESSION['table_courant'])){
+    echo "<style>
+            #".$_SESSION['table_courant']."{
+            color: blue;
+            }
+            </style>";
+}
 $bdd = new PDO('mysql:host=localhost;dbname=intmarket', 'root', 'root');
 //vérifier si l'utikisateur courant est un administrateur.
 if(isset($_SESSION["role"]) && $_SESSION["role"] == "administrateur") {
     echo "<div class='indent' class='table_bdd'>
     <div  class='table_bdd_contient' >
-        <button onclick='afficher(1)'>ARTICLE</button>
-        <button onclick='afficher(2)'>CATEGORIE</button>
-        <button onclick='afficher(3)'>COMMANDE</button>
-        <button onclick='afficher(4)'>UTILISATEUR</button>
+        <button onclick='afficher(1)' id='t_1'>ARTICLE</button>
+        <button onclick='afficher(2)' id='t_2'>CATEGORIE</button>
+        <button onclick='afficher(3)' id='t_3'>COMMANDE</button>
+        <button onclick='afficher(4)' id='t_4'>UTILISATEUR</button>
     </div>
 </div>";
     if (isset($_GET['table'])) {
