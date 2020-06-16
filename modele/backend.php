@@ -32,13 +32,13 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                 $img_2 = addslashes($trouve['img_2']);
             }
             if ($trouve['img_3'] !== ''){
-                $img_2 = addslashes($trouve['img_3']);
+                $img_3 = addslashes($trouve['img_3']);
             }
             if ($trouve['img_4'] !== ''){
-                $img_2 = addslashes($trouve['img_4']);
+                $img_4 = addslashes($trouve['img_4']);
             }
             if ($trouve['img_5'] !== ''){
-                $img_2 = addslashes($trouve['img_5']);
+                $img_5 = addslashes($trouve['img_5']);
             }
         }
         //récupérer les photos sont ajouté par administrateur
