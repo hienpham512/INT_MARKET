@@ -18,7 +18,7 @@
             include('./vue/formulaire_afficher_backend.html');
             break;
         case 'homme':
-            include('./vue/affiche.html');
+            include('./vue/affichage_page_mode_homme.html');
             break;
         case 'animal_nouriture':
             include('./vue/animal_nouriture.html');

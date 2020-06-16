@@ -25,14 +25,8 @@ a:hover{
 label,h5, input[type=text]{
     margin: 3px;
 }
-.header{
-    position: fixed;
-    width: 100%;
-    top : 0;
-    z-index: 1;
-}
 .principal{
-    margin-top: 220px;
+    margin-top: 150px;
 }
 .salution{
     text-align: center;
@@ -72,4 +66,13 @@ input[type=password]{
     margin-bottom: 0;
     height: 20px;
     background-color: #4dc5da;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky {
+    padding-top: 0px;
 }

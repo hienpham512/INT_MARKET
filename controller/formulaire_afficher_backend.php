@@ -328,7 +328,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
                 echo "<tr>
                         <td> ".$trouve['idArticle']." <input type='hidden' min='1' name='idArticle' value='" . $trouve['idArticle'] . "'></td>
                         <td><input type='text' name='nomArticle' value='" . $trouve['nomArticle'] . "'></td>
-                        <td><input type='number' min='0' name='prixArticle' value='" . $trouve['prixArticle'] . "'></td>
+                        <td><input type='number' min='0' name='prixArticle' step='any' value='" . $trouve['prixArticle'] . "'></td>
                         <td><input type='file' name='imageArticle'>". "</td>
                         <td><input type='file' name='img_2'>". "</td>
                         <td><input type='file' name='img_3'>". "</td>

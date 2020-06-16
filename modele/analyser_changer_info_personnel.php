@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include ("../controller/fct_analyser_mdp.php");
     $idUtilisateur = $_SESSION['idUtilisateur'];
     $bdd = new PDO('mysql:host=localhost;dbname=intmarket', 'root', 'root');
     if(!empty($_POST)) {
@@ -42,8 +43,9 @@
 
             $donne = $bdd ->query("SELECT mdp FROM intmarket.utilisateur WHERE idUtilisateur = '$idUtilisateur'");
             while ($trouve = $donne->fetch()){
-                if($trouve['mdp'] == $mdp_actuel){
+                if(dechiffrer_mdp($trouve['mdp']) == $mdp_actuel){
                     if($nouveau_mdp == $comf_nouveau_mdp){
+                        $nouveau_mdp = chiffrer_mdp($nouveau_mdp);
                         $sql = "UPDATE intmarket.utilisateur SET 
                                 mdp = '$nouveau_mdp'
                             WHERE idUtilisateur = '$idUtilisateur';";
