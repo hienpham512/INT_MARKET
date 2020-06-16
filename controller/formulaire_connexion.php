@@ -20,8 +20,8 @@ if($erreur == "Reconnecter pour accèder à votre profil, s'il vous plaît!"){
 echo "<label class='nom_projet'><h1>I N T ' M A R K E T</h1></label>";
 echo "<p class='p'>Connectez-vous, s'il vous plaît!</p>";
 echo "<h4 class='erreur'>$erreur</h4>";
-echo "<input type='email' name='mail' placeholder='Email' class='input'><br>";
-echo "<input type='password' name='mdp' placeholder='Mot de pass' class='input'><br>";
+echo "<input type='email' name='mail' placeholder='Email' class='input' required><br>";
+echo "<input type='password' name='mdp' placeholder='Mot de pass' class='input' required><br>";
 
 echo "<br><input type='submit' name='valider' value='valider' class='valider_btn'>";
 echo "</form>";

@@ -16,11 +16,50 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
     echo "<br>";
     //si la table qu'il veux modifier est "article".
     if(isset($_POST['modifier']) && $_SESSION["table_courant"] == "article") {
+        $imageArticle = "";
+        $img_2 = "";
+        $img_3 = "";
+        $img_4 = "";
+        $img_5 = "";
+        //s'il y a eu déjà un photo dedans BDD
+        $idArticle = intval($_POST['idArticle']);
+        $donne = $bdd ->query("SELECT * FROM intmarket.article WHERE idArticle = '$idArticle'");
+        while ($trouve = $donne->fetch() ){
+            if($trouve['imageArticle'] !== ''){
+                $imageArticle = addslashes($trouve['imageArticle']);
+            }elseif ($trouve['img_2'] !== ''){
+                $img_2 = addslashes($trouve['img_2']);
+            }elseif ($trouve['img_3'] !== ''){
+                $img_2 = addslashes($trouve['img_3']);
+            }elseif ($trouve['img_4'] !== ''){
+                $img_2 = addslashes($trouve['img_4']);
+            }elseif ($trouve['img_5'] !== ''){
+                $img_2 = addslashes($trouve['img_5']);
+            }
+        }
+        //récupérer les photos sont ajouté par administrateur
+        if(isset($_FILES['imageArticle']['tmp_name']) && $_FILES['imageArticle']['tmp_name'] !== ""){
+            $imageArticle = file_get_contents($_FILES['imageArticle']['tmp_name']);
+            $imageArticle = addslashes($imageArticle);
+        }elseif (isset($_FILES['img_2']['tmp_name']) && $_FILES['img_2']['tmp_name'] !== ""){
+            $img_2 = file_get_contents($_FILES['img_2']['tmp_name']);
+            $img_2 = addslashes($img_2);
+        }elseif (isset($_FILES['img_3']['tmp_name'])&& $_FILES['img_3']['tmp_name'] !== ""){
+            $img_3 = file_get_contents($_FILES['img_3']['tmp_name']);
+            $img_3 = addslashes($img_3);
+        }elseif (isset($_FILES['img_4']['tmp_name'])&& $_FILES['img_4']['tmp_name'] !== ""){
+            $img_4 = file_get_contents($_FILES['img_4']['tmp_name']);
+            $img_4 = addslashes($img_4);
+        }elseif (isset($_FILES['img_5']['tmp_name'])&& $_FILES['img_5']['tmp_name'] !== ""){
+            $img_5 = file_get_contents($_FILES['img_5']['tmp_name']);
+            $img_5 = addslashes($img_5);
+        }
+
         $idArticle = intval($_POST['idArticle']);
         $nomArticle = $_POST['nomArticle'];
         $prixArticle = intval($_POST['prixArticle']);
         $descriptionArticle = $_POST['descriptionArticle'];
-        $imageArticle = $_POST['imageArticle'];
+
         $quantite = intval($_POST['quantite']);
         $categorie_idCategorie = intval($_POST['categorie_idCategorie']);
 
@@ -28,6 +67,10 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                              prixArticle = '$prixArticle',
                              descriptionArticle = '$descriptionArticle',
                              imageArticle = '$imageArticle',
+                             img_2 = '$img_2',
+                             img_3 = '$img_3',
+                             img_4 = '$img_4',
+                             img_5 = '$img_5',
                              quantite = '$quantite',
                              categorie_idCategorie = '$categorie_idCategorie'
                             WHERE article.idArticle = '$idArticle';";
@@ -84,7 +127,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         $panier = $_POST['panier'];
         $role = $_POST['role'];
         $addresse = $_POST['addresse'];
-        $dateDeNaissance = $_POST['dateDaNaissance'];
+        $dateDeNaissance = $_POST['dateDeNaissance'];
         $civilite = $_POST['civilite'];
 
         //verifier si le mail est été pris par un autre utilisateur.
@@ -96,7 +139,18 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                 break;
             }
         }
-        if (!isset($status)){
+        if($dateDeNaissance == ''){
+            $sql = "UPDATE intmarket.utilisateur SET 
+                                 civilite = '$civilite',
+                                 nom = '$nom',
+                                 prenom = '$prenom',
+                                 mail = '$mail',
+                                 mdp = '$mdp',
+                                 panier = '',
+                                 addresse = '$addresse',
+                                 role = '$role'
+                                 WHERE utilisateur.idUtilisateur = '$idUtilisateur';";
+        }else{
             $sql = "UPDATE intmarket.utilisateur SET 
                                  civilite = '$civilite',
                                  nom = '$nom',
@@ -108,11 +162,14 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                                  role = '$role',
                                  dateDeNaissance = '$dateDeNaissance'
                                  WHERE utilisateur.idUtilisateur = '$idUtilisateur';";
+        }
+        if (!isset($status)){
             if($bdd ->exec($sql) == true){
                 $status = "succes";
             }else{
                 $status = "erreur";
             }
+            var_dump($status);
         }
     }elseif (isset($_POST['supprimer']) && $_SESSION['table_courant'] == "article"){
         $idArticle = intval($_POST["idArticle"]);
@@ -163,11 +220,34 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                 break;
             }
         }
+        $imageArticle = "";
+        $img_2 = "";
+        $img_3 = "";
+        $img_4 = "";
+        $img_5 = "";
+
         if(!isset($erreur)){
+            if(isset($_FILES['imageArticle']['tmp_name']) && $_FILES['imageArticle']['tmp_name'] !== ""){
+                $imageArticle = file_get_contents($_FILES['imageArticle']['tmp_name']);
+                $imageArticle = addslashes($imageArticle);
+            }elseif (isset($_FILES['img_2']['tmp_name']) && $_FILES['img_2']['tmp_name'] !== ""){
+                $img_2 = file_get_contents($_FILES['img_2']['tmp_name']);
+                $img_2 = addslashes($img_2);
+            }elseif (isset($_FILES['img_3']['tmp_name'])&& $_FILES['img_3']['tmp_name'] !== ""){
+                $img_3 = file_get_contents($_FILES['img_3']['tmp_name']);
+                $img_3 = addslashes($img_3);
+            }elseif (isset($_FILES['img_4']['tmp_name'])&& $_FILES['img_4']['tmp_name'] !== ""){
+                $img_4 = file_get_contents($_FILES['img_4']['tmp_name']);
+                $img_4 = addslashes($img_4);
+            }elseif (isset($_FILES['img_5']['tmp_name'])&& $_FILES['img_5']['tmp_name'] !== ""){
+                $img_5 = file_get_contents($_FILES['img_5']['tmp_name']);
+                $img_5 = addslashes($img_5);
+            }
+
+
             $nomArticle = $_POST['nomArticle'];
             $prixArticle = intval($_POST['prixArticle']);
             $descriptionArticle = $_POST['descriptionArticle'];
-            $imageArticle = $_POST['imageArticle'];
             $quantite = intval($_POST['quantite']);
             $nomCategorie = $_POST['nomCategorie'];
             $sousCategorie = $_POST['sousCategorie'];
@@ -178,8 +258,8 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                     $categorie_idCategorie = $trouve['idCategorie'];
                     $idCategorie_trouve = true;
                     $sql = "INSERT INTO intmarket.article
-                            (nomArticle, prixArticle, imageArticle, descriptionArticle, quantite, categorie_idCategorie) VALUES 
-                            ('$nomArticle','$prixArticle','$imageArticle','$descriptionArticle','$quantite','$categorie_idCategorie')";
+                            (nomArticle, prixArticle, imageArticle,img_2, img_3 ,img_4 ,img_5 , descriptionArticle, quantite, categorie_idCategorie) VALUES 
+                            ('$nomArticle','$prixArticle','$imageArticle','$img_2','$img_3','$img_4','$img_5','$descriptionArticle','$quantite','$categorie_idCategorie')";
                     if($bdd ->exec($sql) == true){
                         $status = "succes";
                     }else{
@@ -265,7 +345,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         $panier = $_POST['panier'];
         $role = $_POST['role'];
         $addresse = $_POST['addresse'];
-        $dateDeNaissance = $_POST['dateDaNaissance'];
+        $dateDeNaissance = $_POST['dateDeNaissance'];
         $donne = $bdd ->query("SELECT * FROM intmarket.utilisateur");
         while ($trouve = $donne ->fetch()){
             if($trouve['mail'] == $mail){
@@ -286,15 +366,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         }
 
     }
-    if($status == 'succes'){
-        $_SESSION['status'] = 'succes';
-    }elseif ($status == 'erreur'){
-        if($erreur == 'mail'){
-            $_SESSION['status'] = "erreur_mail";
-        }else{
-            $_SESSION['status'] = "erreur";
-        }
-    }
+    $_SESSION['status'] = $status;
     header("location: ../index.php?action=backend");
 }
 ?>

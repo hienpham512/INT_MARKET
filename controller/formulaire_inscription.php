@@ -17,12 +17,12 @@ echo "<form action='./modele/inscription.php' method='POST'>";
 echo "<label class='nom_projet'><h1>I N T ' M A R K E T</h1></label>";
 echo "<p class='p'>Completer pour nous rejoindre, s'il vous plaît!</p>";
 echo "<h4 class='erreur'>$erreur</h4>";
-echo "<input type='text' name='nom'  placeholder='Nom' class='input' >             ";
-echo "<input type='text' name='prenom' placeholder='Prénom' class='input'><br>";
-echo "<input type='email' name='mail' placeholder='Email' class='input'><br>";
-echo "<input type='text' name='addresse' placeholder='Addresse' class='input'><br>";
-echo "<input type='password' name='mdp' placeholder='Mot de pass' class='input'><br>";
-echo "<input type='password' name='comf_mdp' placeholder='Comfirmer mot de pass' class='input'><br>";
+echo "<input type='text' name='nom'  placeholder='Nom' class='input' required>             ";
+echo "<input type='text' name='prenom' placeholder='Prénom' class='input' required><br>";
+echo "<input type='email' name='mail' placeholder='Email' class='input' required><br>";
+echo "<input type='text' name='addresse' placeholder='Addresse' class='input' required><br>";
+echo "<input type='password' name='mdp' placeholder='Mot de pass' class='input' required><br>";
+echo "<input type='password' name='comf_mdp' placeholder='Comfirmer mot de pass' class='input' required><br>";
 echo "<br><input type='submit' name='valider' value='valider' class='valider_btn'>";
 echo "</form>";
 echo "<br><br><br>
