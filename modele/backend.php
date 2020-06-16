@@ -119,11 +119,17 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         }
         //si la table qu'il veux modifier est "utilisatuer".
     }elseif (isset($_POST['modifier']) && $_SESSION["table_courant"] == "utilisateur"){
+        include("../controller/fct_analyser_mdp.php");
         $idUtilisateur = intval($_POST['idUtilisateur']);
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
         $mail = $_POST['mail'];
-        $mdp = $_POST['mdp'];
+
+        $mdp = chiffrer_mdp($_POST['mdp']);
+        if($mdp == false){
+            $status = "erreur";
+            $erreur = "moin_de_6_carractere";
+        }
         $panier = $_POST['panier'];
         $role = $_POST['role'];
         $addresse = $_POST['addresse'];
@@ -169,7 +175,6 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
             }else{
                 $status = "erreur";
             }
-            var_dump($status);
         }
     }elseif (isset($_POST['supprimer']) && $_SESSION['table_courant'] == "article"){
         $idArticle = intval($_POST["idArticle"]);
