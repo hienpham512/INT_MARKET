@@ -7,13 +7,27 @@
 </head>
 
 <body>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
 <div class="header">
         <?php
         include("./vue/formulaire_navbar.html"); ?>
             <div class="index">
                 <a href="./index.php">Accueil</a> ><label>Homme</label>
             </div>
-            <div class="espace_personnel">
+            <div class="homme">
                 <h2>Homme</h2>
                 <div class="block_espace"></div>
             </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>INTMARKET accueil</title>
-    <link rel="stylesheet" href="./vue/style_accueil.css">
+    <link href="./vue/style_navbar.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -21,3 +21,17 @@
 </body>
 
 </html>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>

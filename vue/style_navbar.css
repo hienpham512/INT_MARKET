@@ -121,3 +121,12 @@ input[type=text]:focus {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky {
+    padding-top: 0px;
+}

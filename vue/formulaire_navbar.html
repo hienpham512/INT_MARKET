@@ -9,99 +9,96 @@
 
 <body>
     <table border="0" class="table_border">
-        <div class="navbar_1">
-            <tr class="ligne_1">
-                <th class="bouton_identifiant">
-                    <?php include("./controller/formulaire_afficher_bouton_identifiant.php"); ?>
-                </th>
-                <th class="logo">
-                    <div>
-                        <a href="./index.php" class="photo_logo"><img src='./vue/photo_specific/logo.png' width='110px' height="110px"></a>
-                    </div>
-                </th>
-                <th>
-                    <div class="rechercher">
-                        <form action="./index.php?action=rehercher" method="post">
-                            <input type="text" class="boit_rechercher" name="mot_cle" placeholder="Rechercher">
-                            <button class="bouton_loupe" class=""><img src="./vue/photo_specific/photo_loupe_2.png"  width='50px'; height='50px'></button>
-                        </form>
-                    </div>
-                </th>
-                <th class="panier">
-                    <div>
-                        <img src="./vue/photo_specific/sac.png" width="50px" height="50px">
+        <tr class="ligne_1">
+            <th class="bouton_identifiant">
+                <?php include("./controller/formulaire_afficher_bouton_identifiant.php"); ?>
+            </th>
+            <th class="logo">
+                <div>
+                    <a href="./index.php" class="photo_logo"><img src='./vue/photo_specific/logo.png' width='110px' height="110px"></a>
+                </div>
+            </th>
+            <th>
+                <div class="rechercher">
+                    <form action="./index.php?action=rehercher" method="post">
+                        <input type="text" class="boit_rechercher" name="mot_cle" placeholder="Rechercher">
+                        <button class="bouton_loupe" class=""><img src="./vue/photo_specific/photo_loupe_2.png"  width='50px'; height='50px'></button>
+                    </form>
+                </div>
+            </th>
+            <th class="panier">
+                <div>
+                    <img src="./vue/photo_specific/sac.png" width="50px" height="50px">
 
-                        <a href="./index.php?action=panier" class="photo_panier"><img src="./vue/photo_specific/panier.png" class="photo_panier" width='80px' ; height='80px'></a>
+                    <a href="./index.php?action=panier" class="photo_panier"><img src="./vue/photo_specific/panier.png" class="photo_panier" width='80px' ; height='80px'></a>
+                </div>
+            </th>
+        </tr>
+        <tr class="categorie" id="navbar">
+            <th ><a href="./index.php">ACCUEIL</a></th>
+            <th class="categorie_1">NOS RAYONS</th>
+            <th class="ligne_2">
+                <div class="navbar_2" >
+                    <div class="dropdown">
+                        <button class="dropbtn">MARCHE <img src="./vue/photo_specific/supermarche.png" width="30px" height="30px">
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                        <div class="dropdown-content">
+                            <a href="./modele/analyser_choix_categorie.php?choix=alimentation">Fruits & Légumes <img
+                                src="./vue/photo_specific/photo_legume.png" width="50px" height="50px"></a>
+                            <a href="./modele/analyser_choix_categorie.php?choix=legume"> Pains, Patisserie<img
+                                src="./vue/photo_specific/pain.png" width="50px" height="50px"></a>
+                            <a href="./modele/analyser_choix_categorie.php?choix=brasserie">Brasserie <img
+                                src="./vue/photo_specific/boisson.png" width="50px" height="50px"></a>
+                            <a href="./modele/analyser_choix_categorie.php?choix=brasserie">Boucherie, Volaille, Charcuteruie<img
+                                src="./vue/photo_specific/alimentation.png" width="50px" height="50px"></a>
+                        </div>
                     </div>
-                </th>
-            </tr>
-            <tr class="categorie">
-                <th class="categorie_1"></th>
-                <th class="categorie_1">NOS RAYONS</th>
-                <th class="ligne_2">
-                    <div class="navbar_2">
-                        <div class="dropdown">
-                            <button class="dropbtn">MARCHE <img src="./vue/photo_specific/supermarche.png" width="30px" height="30px">
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                            <div class="dropdown-content">
-                                <a href="./modele/analyser_choix_categorie.php?choix=alimentation">Fruits & Légumes <img
-                                    src="./vue/photo_specific/photo_legume.png" width="50px" height="50px"></a>
-                                <a href="./modele/analyser_choix_categorie.php?choix=legume"> Pains, Patisserie<img
-                                    src="./vue/photo_specific/pain.png" width="50px" height="50px"></a>
-                                <a href="./modele/analyser_choix_categorie.php?choix=brasserie">Brasserie <img
-                                    src="./vue/photo_specific/boisson.png" width="50px" height="50px"></a>
-                                <a href="./modele/analyser_choix_categorie.php?choix=brasserie">Boucherie, Volaille, Charcuteruie<img
-                                    src="./vue/photo_specific/alimentation.png" width="50px" height="50px"></a>
-                            </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">MODE <img src="./vue/photo_specific/mode.png" width="30px" height="30px">
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                        <div class="dropdown-content">
+                            <a href="./modele/analyser_choix_categorie.php?choix=femme">Femme <img
+                                src="./vue/photo_specific/woman.png" width="50px" height="50px"></a>
+                            <a href="./index.php?action=homme">Homme<img
+                                src="./vue/photo_specific/man.png" width="50px" height="50px"></a>
+                            <a href="./modele/analyser_choix_categorie.php?choix=enfant">Enfant<img
+                                src="./vue/photo_specific/kids.png" width="50px" height="50px"></a>
                         </div>
-                        <div class="dropdown">
-                            <button class="dropbtn">MODE <img src="./vue/photo_specific/mode.png" width="30px" height="30px">
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                            <div class="dropdown-content">
-                                <a href="./modele/analyser_choix_categorie.php?choix=femme">Femme <img
-                                    src="./vue/photo_specific/woman.png" width="50px" height="50px"></a>
-                                <a href="./index.php?action=homme">Homme<img
-                                    src="./vue/photo_specific/man.png" width="50px" height="50px"></a>
-                                <a href="./modele/analyser_choix_categorie.php?choix=enfant">Enfant<img
-                                    src="./vue/photo_specific/kids.png" width="50px" height="50px"></a>
-                            </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">MAISON & LOISIRS <img src="./vue/photo_specific/maison_loisirs.png" width="30px" height="30px">
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                        <div class="dropdown-content">
+                            <a href="./modele/analyser_choix_categorie.php?choix=salon">Salon<img
+                                src="./vue/photo_specific/salon.jpg" width="50px" height="50px"></a>
+                            <a href="./modele/analyser_choix_categorie.php?choix=cusine">Cusine<img
+                                src="./vue/photo_specific/cuisine.jpg" width="50px" height="50px"></a>
+                            <a href="./modele/analyser_choix_categorie.php?choix=salle_de_bain">Salle de Bain<img
+                                src="./vue/photo_specific/bain.jpg" width="50px" height="50px"></a>
+                            <a href="./modele/analyser_choix_categorie.php?choix=loisirs">Loisirs<img
+                                src="./vue/photo_specific/loisirs.jpg" width="50px" height="50px"></a>
+                            <a href="./modele/analyser_choix_categorie.php?choix=materiaux">Matériaux<img
+                                src="./vue/photo_specific/tools.jpg" width="50px" height="50px"></a>
                         </div>
-                        <div class="dropdown">
-                            <button class="dropbtn">MAISON & LOISIRS <img src="./vue/photo_specific/maison_loisirs.png" width="30px" height="30px">
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                            <div class="dropdown-content">
-                                <a href="./modele/analyser_choix_categorie.php?choix=salon">Salon<img
-                                    src="./vue/photo_specific/salon.jpg" width="50px" height="50px"></a>
-                                <a href="./modele/analyser_choix_categorie.php?choix=cusine">Cusine<img
-                                    src="./vue/photo_specific/cuisine.jpg" width="50px" height="50px"></a>
-                                <a href="./modele/analyser_choix_categorie.php?choix=salle_de_bain">Salle de Bain<img
-                                    src="./vue/photo_specific/bain.jpg" width="50px" height="50px"></a>
-                                <a href="./modele/analyser_choix_categorie.php?choix=loisirs">Loisirs<img
-                                    src="./vue/photo_specific/loisirs.jpg" width="50px" height="50px"></a>
-                                <a href="./modele/analyser_choix_categorie.php?choix=materiaux">Matériaux<img
-                                    src="./vue/photo_specific/tools.jpg" width="50px" height="50px"></a>
-                            </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">ANIMALERIE <img src="./vue/photo_specific/animal_2.png" width="30px" height="30px">
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                        <div class="dropdown-content">
+                            <a href="./index.php?action=animal_nouriture">Nourriture<img
+                                src="./vue/photo_specific/animal3.jpg" width="50px" height="50px"></a>
+                            <a href="./modele/analyser_choix_categorie.php?choix=accessoire">Accessoire<img
+                                src="./vue/photo_specific/animal4.jpg" width="50px" height="50px"></a>
                         </div>
-                        <div class="dropdown">
-                            <button class="dropbtn">ANIMALERIE <img src="./vue/photo_specific/animal_2.png" width="30px" height="30px">
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-                            <div class="dropdown-content">
-                                <a href="./index.php?action=animal_nouriture">Nourriture<img
-                                    src="./vue/photo_specific/animal3.jpg" width="50px" height="50px"></a>
-                                <a href="./modele/analyser_choix_categorie.php?choix=accessoire">Accessoire<img
-                                    src="./vue/photo_specific/animal4.jpg" width="50px" height="50px"></a>
-                            </div>
 
-                        </div>
                     </div>
-                </th>
-            </tr>
-        </div>
+                </div>
+            </th>
+        </tr>
     </table>
 </body>
-
 </html>

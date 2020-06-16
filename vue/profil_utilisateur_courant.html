@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./vue/style_espace_profil.css">
 </head>
 <body>
-<div class="header">
+<div>
     <?php
         include("./vue/formulaire_navbar.html"); ?>
     <div class="index">
@@ -37,3 +37,17 @@
 </div>
 </body>
 </html>
+<script>
+    window.onscroll = function() {myFunction()};
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+</script>
