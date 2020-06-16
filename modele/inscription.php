@@ -1,33 +1,37 @@
 <?php
 session_start();
 $bdd = new PDO('mysql:host=localhost;dbname=intmarket', 'root', 'root');
-
+include('../controller/fct_analyser_mdp.php');
 $donne = $_POST;
 if (isset($donne['valider'])) {
+    $inscription = true;
     $mail = strtolower($donne['mail']);
-    $mdp = $donne['mdp'];
+    $mdp = chiffrer_mdp($donne['mdp']);
     $nom = $donne['nom'];
     $prenom = $donne['prenom'];
     $addresse = $donne['addresse'];
 
-    $inscription = true;
-
     $reponde = $bdd->query("SELECT mail FROM intmarket.utilisateur");
-    if ($donne['mail'] == '' || $donne['mdp'] == '' || $donne['comf_mdp'] == '' || $donne['nom'] == '' || $donne['addresse'] == '' || $donne['nom'] == '' || $donne['prenom' == '']) {
-        $erreur = "case_vide";
+    if($mdp == false){
         $inscription = false;
+        $erreur = "mdp";
     }else{
-        while ($trouve = $reponde->fetch()) {
-            if ($donne['mail'] == $trouve['mail']) {
-                $erreur = "email_pris";
-                $inscription = false;
-                break;
-            } elseif ($donne['mdp'] !== $donne['comf_mdp']) {
-                $erreur = 'comf_mdp';
-                $inscription = false;
-                break;
-            } elseif ($donne['mail'] !== $trouve['mail'] && $donne['mdp'] == $donne['comf_mdp']) {
-                $inscription = true;
+        if ($donne['mail'] == '' || $donne['mdp'] == '' || $donne['comf_mdp'] == '' || $donne['nom'] == '' || $donne['addresse'] == '' || $donne['nom'] == '' || $donne['prenom' == '']) {
+            $erreur = "case_vide";
+            $inscription = false;
+        }else{
+            while ($trouve = $reponde->fetch()) {
+                if ($donne['mail'] == $trouve['mail']) {
+                    $erreur = "email_pris";
+                    $inscription = false;
+                    break;
+                } elseif ($donne['mdp'] !== $donne['comf_mdp']) {
+                    $erreur = 'comf_mdp';
+                    $inscription = false;
+                    break;
+                } elseif ($donne['mail'] !== $trouve['mail'] && $donne['mdp'] == $donne['comf_mdp']) {
+                    $inscription = true;
+                }
             }
         }
     }

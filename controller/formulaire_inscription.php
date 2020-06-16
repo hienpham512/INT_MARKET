@@ -9,6 +9,8 @@ if(isset($_GET['erreur'])) {
         $erreur = "ERREUR : le mail a été utilisé par un autre utilisateur!";
     } elseif ($_GET['erreur'] == 'comf_mdp') {
         $erreur = "ERREUR : La comfirmation de mot de pass n'est pas dupliqué!";
+    } elseif ($_GET['erreur'] == 'mdp') {
+        $erreur = "ERREUR : Le mot de pass doit être au moin 6 carractère!";
     } else {
         $erreur = '';
     }

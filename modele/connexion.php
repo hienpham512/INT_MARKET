@@ -2,6 +2,7 @@
 session_start();
 session_destroy();
 session_start();
+include("../controller/fct_analyser_mdp.php");
 $bdd = new PDO('mysql:host=localhost;dbname=intmarket','root','root');
 
 if(isset($_POST)){
@@ -17,7 +18,7 @@ if(isset($donne['valider'])){
         $id_utilisateur = '';
     }
     while($trouve = $reponde->fetch()){
-        if($donne['mail'] == $trouve['mail'] && $donne['mdp'] == $trouve['mdp']){
+        if($donne['mail'] == $trouve['mail'] && $donne['mdp'] == dechiffrer_mdp($trouve['mdp'])){
             $connexion = true;
             $id_utilisateur = $trouve['idUtilisateur'];
             break;
