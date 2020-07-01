@@ -4,26 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <title>INTMARKET accueil</title>
-</head>
-
-<body>
-<script>
-    window.onscroll = function() {myFunction()};
-
-    var navbar = document.getElementById("navbar");
-    var sticky = navbar.offsetTop;
-
-    function myFunction() {
-        if (window.pageYOffset >= sticky) {
-            navbar.classList.add("sticky")
-        } else {
-            navbar.classList.remove("sticky");
+    <style>
+        .item-image{
+            height: 420px;
         }
-    }
-</script>
-<div class="header">
-        <?php
-        include("./vue/formulaire_navbar.html"); ?>
+        li.item_produit {
+            font-size: 13px;
+            line-height: 20px;
+            box-sizing: border-box;
+            display: inline-block;
+            letter-spacing: normal;
+            margin: 0 0 4px 4px;
+            vertical-align: top;
+        }
+        .item-buttons {
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+        }
+        .item-heading {
+            margin-top: 22px;
+            font-size: 13px;
+            letter-spacing: 0;
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: none;
+            white-space: nowrap;
+        }
+        a:hover, .link:hover {
+            color: #222;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+            <?php
+            include("./vue/formulaire_navbar.html");
+            ?>
             <div class="index">
                 <a href="./index.php">Accueil</a> ><label>Homme</label>
             </div>
@@ -32,9 +53,10 @@
                 <div class="block_espace"></div>
             </div>
     </div>
+    <div>
+        <?php
+            include("./modele/affichage_page_mode_homme.php");
+            ?>
+    </div>
 </body>
-
-
-</body>
-
 </html>
