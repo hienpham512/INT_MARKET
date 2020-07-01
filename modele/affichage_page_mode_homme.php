@@ -8,7 +8,7 @@ function verifier_quantite_taille_vetement($id){
         $taille = array("xs","s","m","l","xl","xxl");
         for ($i = 0; $i < count($taille);$i++){
             $elt = "quantite_taille_".$taille["$i"];
-            if($trouve["$elt"] !== NULL && $trouve["$elt"] !== 0){
+            if($trouve["$elt"] !== NULL && $trouve[$elt] !== 0){
                 $option .= "<option value='".$taille[$i]."'>".$taille[$i]."</option>";
             }else{
                 $option .= "";
