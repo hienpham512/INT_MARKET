@@ -38,4 +38,5 @@ if (!isset($_SESSION['idUtilisateur'])) {
             </div>
           </div>";
 }
+session_write_close();
 ?>

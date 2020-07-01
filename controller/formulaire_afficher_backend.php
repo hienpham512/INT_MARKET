@@ -38,7 +38,7 @@ if(isset($_GET['table'])){
 $bdd = new PDO('mysql:host=localhost;dbname=intmarket', 'root', 'root');
 //vérifier si l'utikisateur courant est un administrateur.
 if(isset($_SESSION["role"]) && $_SESSION["role"] == "administrateur") {
-    echo "<div class='indent' class='table_bdd'>
+    echo "<div class='indent'>
     <div  class='table_bdd_contient' >
         <button onclick='afficher(1)' class='dropbtn' id='t_1'>ARTICLE</button>
         <button onclick='afficher(2)' class='dropbtn' id='t_2'>CATEGORIE</button>
