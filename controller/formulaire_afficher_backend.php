@@ -70,9 +70,9 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     //action afficher
     if ($action_administrateur == 1 && $table == 1) {
         $donne = $bdd->query("SELECT * FROM intmarket.article");
-        echo "<br><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>img_2<th>img_3<th>img_4<th>img_5<th>descriptionArticle<th>quantite<th>categorie_idCategorie</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>img_2<th>img_3<th>img_4<th>img_5<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>quantite_taille_xs<th>quantite_taille_s<th>quantite_taille_m<th>quantite_taille_l<th>quantite_taille_xl<th>quantite_taille_xxl</th></tr>";
         while ($trouve = $donne->fetch()) {
-            echo "<tr><td>" . $trouve["idArticle"] . "<td>" . $trouve["nomArticle"] . "<td>" . $trouve["prixArticle"] . "<td>" . "<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['imageArticle'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_2'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_3'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_4'])."'></img>". "<td>"  ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_5'])."'></img>". "<td>" .  $trouve["descriptionArticle"] . "<td>" . $trouve["quantite"] . "<td>" . $trouve["categorie_idCategorie"] . "</td></tr>";
+            echo "<tr><td>" . $trouve["idArticle"] . "<td>" . $trouve["nomArticle"] . "<td>" . $trouve["prixArticle"] . "<td>" . "<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['imageArticle'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_2'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_3'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_4'])."'></img>". "<td>"  ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_5'])."'></img>". "<td>" .  $trouve["descriptionArticle"] . "<td>" . $trouve["quantite"] . "<td>" . $trouve["categorie_idCategorie"] . "<td>" . $trouve["quantite_taille_xs"] ."<td>" . $trouve["quantite_taille_s"] ."<td>" . $trouve["quantite_taille_m"] ."<td>" . $trouve["quantite_taille_l"] ."<td>" . $trouve["quantite_taille_xl"] ."<td>" . $trouve["quantite_taille_xxl"] ."</td></tr>";
         }
     } elseif ($action_administrateur == 1 && $table == 2) {
         $donne = $bdd->query("SELECT * FROM intmarket.categorie");
@@ -147,6 +147,12 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
                 <label>imageArticle_5(s'il en y a): </label><input type='file' name='img_5'><br>
                 <label>descriptionArticle: </label><input type='text' name='descriptionArticle'><br>
                 <label>quantite: </label><input type='number'  min='1' name='quantite'><br>
+                <label>quantite taille xs: </label><input type='number'  name='quantite_taille_xs'><br>
+                <label>quantite taille s: </label><input type='number'  name='quantite_taille_s'><br>
+                <label>quantite taille m: </label><input type='number'  name='quantite_taille_m'><br>
+                <label>quantite taille l: </label><input type='number'  name='quantite_taille_l'><br>
+                <label>quantite taille xl: </label><input type='number'  name='quantite_taille_xl'><br>
+                <label>quantite taille xxl: </label><input type='number'  name='quantite_taille_xxl'><br>
                 <label>nomCategorie: </label>$select_nomCategorie
                 <label>sousCategorie: </label>$select_sousCategorie<br><br/>
                 <input type='submit' name='ajouter' value='insérer'>
@@ -209,11 +215,11 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
         //action modifier
     }elseif ($action_administrateur == 3 && $table == 1) {
         $donne = $bdd->query("SELECT * FROM intmarket.article");
-        echo "<br><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>img_2<th>img_3<th>img_4<th>img_5<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>action</th></tr>";
+        echo "<br><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>img_2<th>img_3<th>img_4<th>img_5<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>quantite_taille_xs<th>quantite_taille_s<th>quantite_taille_m<th>quantite_taille_l<th>quantite_taille_xl<th>quantite_taille_xxl<th>action</th></tr>";
         $_SESSION['table_courant'] = "article";
         while ($trouve = $donne->fetch()) {
             $idArticle = $trouve['idArticle'];
-            echo "<tr><td>" . $trouve["idArticle"] . "<td>" . $trouve["nomArticle"] . "<td>" . $trouve["prixArticle"] . "<td>" . "<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['imageArticle'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_2'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_3'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_4'])."'></img>". "<td>"  ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_5'])."'></img>". "<td>" . $trouve["descriptionArticle"] . "<td>" . $trouve["quantite"] . "<td>" . $trouve["categorie_idCategorie"] . "<td>" . "<div><button onclick='modifier($idArticle)'>modifier</button></div>" . "</td></tr>";
+            echo "<tr><td>" . $trouve["idArticle"] . "<td>" . $trouve["nomArticle"] . "<td>" . $trouve["prixArticle"] . "<td>" . "<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['imageArticle'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_2'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_3'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_4'])."'></img>". "<td>"  ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_5'])."'></img>". "<td>" . $trouve["descriptionArticle"] . "<td>" . $trouve["quantite"] . "<td>" . $trouve["categorie_idCategorie"] . "<td>" . $trouve["quantite_taille_xs"] ."<td>" . $trouve["quantite_taille_s"] ."<td>" . $trouve["quantite_taille_m"] ."<td>" . $trouve["quantite_taille_l"] ."<td>" . $trouve["quantite_taille_xl"] ."<td>" . $trouve["quantite_taille_xxl"] . "<td>" . "<div><button onclick='modifier($idArticle)'>modifier</button></div>" . "</td></tr>";
         }
     } elseif ($action_administrateur == 3 && $table == 2) {
         $_SESSION['table_courant'] = "categorie";
@@ -321,7 +327,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
     $id_index_modifier = $_GET['modifier'];
     if ($table_courant == 'article') {
         $donne = $bdd->query("SELECT * FROM intmarket.article");
-        echo "<form action='./modele/backend.php' method='post' enctype='multipart/form-data' ><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>img_2<th>img_3<th>img_4<th>img_5<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>action</th></tr>";
+        echo "<form action='./modele/backend.php' method='post' enctype='multipart/form-data' ><center><table border='1'><tr><th>idArticle<th>nomArticle<th>prixArticle<th>imageArticle<th>img_2<th>img_3<th>img_4<th>img_5<th>descriptionArticle<th>quantite<th>categorie_idCategorie<th>quantite_taille_xs<th>quantite_taille_s<th>quantite_taille_m<th>quantite_taille_l<th>quantite_taille_xl<th>quantite_taille_xxl<th>action</th></tr>";
         while ($trouve = $donne->fetch()) {
             $idArticle = $trouve['idArticle'];
             if ($trouve['idArticle'] == $id_index_modifier) {
@@ -337,6 +343,12 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
                         <td><input type='text' name='descriptionArticle' value='" . $trouve['descriptionArticle'] . "'></td>
                         <td><input type='number' min='1' name='quantite' value='" . $trouve['quantite'] . "'></td>
                         <td><input type='number' min='1' name='categorie_idCategorie' value='" . $trouve['categorie_idCategorie'] . "'></td>
+                        <td><input type='number' name='quantite_taille_xs' value='".$trouve['quantite_taille_xs']."'>
+                        <td><input type='number' name='quantite_taille_s' value='".$trouve['quantite_taille_s']."'>
+                        <td><input type='number' name='quantite_taille_m' value='".$trouve['quantite_taille_m']."'>
+                        <td><input type='number' name='quantite_taille_l' value='".$trouve['quantite_taille_l']."'>
+                        <td><input type='number' name='quantite_taille_xl' value='".$trouve['quantite_taille_xl']."'>
+                        <td><input type='number' name='quantite_taille_xxl' value='".$trouve['quantite_taille_xxl']."'>
                         <td><div class='dropdown'>
                                 <a onclick='myFunction()' class='dropbtn'>Valider</a>
                                 <div id='myDropdown' class='dropdown-content'>
@@ -346,7 +358,7 @@ if(isset($_SESSION['action_administrateur']) && isset($table)){
                                 </div>
                         </td></tr>";
             } else {
-                echo "<tr><td>" . $trouve["idArticle"] . "<td>" . $trouve["nomArticle"] . "<td>" . $trouve["prixArticle"] . "<td>" . "<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['imageArticle'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_3'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_3'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_4'])."'></img>". "<td>"  ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_5'])."'></img>". "<td>" . $trouve["descriptionArticle"] . "<td>" . $trouve["quantite"] . "<td>" . $trouve["categorie_idCategorie"] . "<td>" . "<div><a onclick='modifier($idArticle)'>modifier</a></div>" . "</td></tr>";
+                echo "<tr><td>" . $trouve["idArticle"] . "<td>" . $trouve["nomArticle"] . "<td>" . $trouve["prixArticle"] . "<td>" . "<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['imageArticle'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_3'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_3'])."'></img>". "<td>" ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_4'])."'></img>". "<td>"  ."<img widtd='20%' height='10%' src='data:image/jpeg;base64,".base64_encode($trouve['img_5'])."'></img>". "<td>" . $trouve["descriptionArticle"] . "<td>" . $trouve["quantite"] . "<td>" . $trouve["categorie_idCategorie"] ."<td>" . $trouve["quantite_taille_xs"] ."<td>" . $trouve["quantite_taille_s"] ."<td>" . $trouve["quantite_taille_m"] ."<td>" . $trouve["quantite_taille_l"] ."<td>" . $trouve["quantite_taille_xl"] ."<td>" . $trouve["quantite_taille_xxl"]. "<td>" . "<div><a onclick='modifier($idArticle)'>modifier</a></div>" . "</td></tr>";
             }
         }
         echo "</table></form>";
