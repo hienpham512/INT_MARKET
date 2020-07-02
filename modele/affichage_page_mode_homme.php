@@ -67,6 +67,7 @@ if(!isset($_GET['article'])){
                 ".$trouve['descriptionArticle']."
                 </div>
                 <form action='./modele/ajouter_au_panier.php' method='post'>
+                    <input type='hidden' name='idArticle' value='$idArticle'>
                     <label><h3>Sélectionner la taille : </h3></label>
                     <select name='taille'>
                         ".verifier_quantite_taille_vetement($idArticle)."
