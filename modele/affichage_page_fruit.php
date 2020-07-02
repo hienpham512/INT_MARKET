@@ -35,15 +35,14 @@ function afficher_image_item($id){
 if(!isset($_GET['article'])){
     $donne = $bdd->query("SELECT * FROM intmarket.article");
     while ($trouve = $donne->fetch()){
-        if($trouve['categorie_idCategorie'] == 6){
+        if($trouve['categorie_idCategorie'] == 1){
             echo "<li class='item_produit'>
-                    <article class='mode-femme'>
+                    <article class='mode-homme'>
                         <div class='image-contient'>
-                            <a href='./index.php?action=femme&article=".base64_encode($trouve['idArticle'])."'><img class='item-image' src='data:image/jpeg;base64,".base64_encode($trouve['imageArticle'])."'></a>
+                            <a href='./index.php?action=homme&article=".base64_encode($trouve['idArticle'])."'><img class='item-image' src='data:image/jpeg;base64,".base64_encode($trouve['imageArticle'])."'></a>
                             <div class='item-detail'>
                                 <h3 class='item-heading'>
-                                    <a class='link' href='./index.php?action=femme&article=".base64_encode($trouve['idArticle'])."'>".$trouve['nomArticle']."</a>
-                   
+                                    <a class='link' href='./index.php?action=homme&article=".base64_encode($trouve['idArticle'])."'>".$trouve['nomArticle']."</a>
                                 </h3>
                                 <strong class='item-prix'>
                                     <span class='prix'>".$trouve['prixArticle']." €</span>
@@ -68,7 +67,6 @@ if(!isset($_GET['article'])){
                 ".$trouve['descriptionArticle']."
                 </div>
                 <form action='./modele/ajouter_au_panier.php' method='post'>
-                    <input type='hidden' name='idArticle' value='$idArticle'>
                     <label><h3>Sélectionner la taille : </h3></label>
                     <select name='taille'>
                         ".verifier_quantite_taille_vetement($idArticle)."
