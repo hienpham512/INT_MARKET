@@ -8,7 +8,7 @@ function verifier_quantite_taille_vetement($id){
         $taille = array("xs","s","m","l","xl","xxl");
         for ($i = 0; $i < count($taille);$i++){
             $elt = "quantite_taille_".$taille["$i"];
-            if($trouve["$elt"] !== NULL && $trouve[$elt] !== 0){
+            if($trouve["$elt"] !== NULL && $trouve["$elt"] !== 0){
                 $option .= "<option value='".$taille[$i]."'>".$taille[$i]."</option>";
             }else{
                 $option .= "";
@@ -35,14 +35,15 @@ function afficher_image_item($id){
 if(!isset($_GET['article'])){
     $donne = $bdd->query("SELECT * FROM intmarket.article");
     while ($trouve = $donne->fetch()){
-        if($trouve['categorie_idCategorie'] == 7){
+        if($trouve['categorie_idCategorie'] == 6){
             echo "<li class='item_produit'>
-                    <article class='mode-homme'>
+                    <article class='mode-femme'>
                         <div class='image-contient'>
-                            <a href='./index.php?action=homme&article=".base64_encode($trouve['idArticle'])."'><img class='item-image' src='data:image/jpeg;base64,".base64_encode($trouve['imageArticle'])."'></a>
+                            <a href='./index.php?action=femme&article=".base64_encode($trouve['idArticle'])."'><img class='item-image' src='data:image/jpeg;base64,".base64_encode($trouve['imageArticle'])."'></a>
                             <div class='item-detail'>
                                 <h3 class='item-heading'>
-                                    <a class='link' href='./index.php?action=homme&article=".base64_encode($trouve['idArticle'])."'>".$trouve['nomArticle']."</a>
+                                    <a class='link' href='./index.php?action=femme&article=".base64_encode($trouve['idArticle'])."'>".$trouve['nomArticle']."</a>
+                   
                                 </h3>
                                 <strong class='item-prix'>
                                     <span class='prix'>".$trouve['prixArticle']." €</span>

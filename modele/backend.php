@@ -79,7 +79,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                 $quantite_taille[$i] = '';
             }
         }
-        var_dump($quantite_taille);
+        $type = $_POST['type'];
 
         $sql = "UPDATE intmarket.article SET nomArticle = '$nomArticle',
                              prixArticle = '$prixArticle',
@@ -91,6 +91,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                              img_5 = '$img_5',
                              quantite = '$quantite',
                              categorie_idCategorie = '$categorie_idCategorie',
+                             type = '$type',
                             quantite_taille_xs = '$quantite_taille[0]',
                              quantite_taille_s = '$quantite_taille[1]',
                              quantite_taille_m = '$quantite_taille[2]',
@@ -109,7 +110,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
     }elseif (isset($_POST['modifier']) && $_SESSION["table_courant"] == "categorie"){
         $idCategorie = intval($_POST['idCategorie']);
         $nomCategorie = $_POST['nomCategorie'];
-        $sousCategorie = $_POST['sousCategorie'];
+        $typeCategorie = $_POST['typeCategorie'];
 
         //vérifier s'il a choisi correct le sousCategori avec nomCategorie
         $donne = $bdd ->query("SELECT * FROM intmarket.categorie");
@@ -117,7 +118,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
             if($trouve['idCategorie'] == $idCategorie){
                 $sql = "UPDATE intmarket.categorie SET
                                nomCategorie = '$nomCategorie',
-                               sousCategorie = '$sousCategorie'
+                               typeCategorie = '$typeCategorie'
                                WHERE categorie.idCategorie = '$idCategorie';";
                 if($bdd ->exec($sql) == true){
                     $status = "succes";
@@ -283,7 +284,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
             $descriptionArticle = $_POST['descriptionArticle'];
             $quantite = intval($_POST['quantite']);
             $nomCategorie = $_POST['nomCategorie'];
-            $sousCategorie = $_POST['sousCategorie'];
+            $typeCategorie = $_POST['typeCategorie'];
             $quantite_taille = array("xs","s","m","l","xl","xxl");
             for ($i = 0; $i< count($quantite_taille);$i++){
                 $elt = "quantite_taille_".$quantite_taille[$i];
@@ -293,14 +294,15 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                     $quantite_taille[$i] = '';
                 }
             }
+            $type = $_POST['type'];
             $donne = $bdd ->query("SELECT * FROM intmarket.categorie");
             while ($trouve = $donne ->fetch()){
-                if($trouve['sousCategorie'] == $sousCategorie && $trouve['nomCategorie'] == $nomCategorie){
+                if($trouve['typeCategorie'] == $typeCategorie && $trouve['nomCategorie'] == $nomCategorie){
                     $categorie_idCategorie = $trouve['idCategorie'];
                     $idCategorie_trouve = true;
                     $sql = "INSERT INTO intmarket.article
-                            (nomArticle, prixArticle, imageArticle,img_2, img_3 ,img_4 ,img_5 , descriptionArticle, quantite, categorie_idCategorie,quantite_taille_xs,quantite_taille_s,quantite_taille_m,quantite_taille_l,quantite_taille_xl,quantite_taille_xxl) VALUES 
-                            ('$nomArticle','$prixArticle','$imageArticle','$img_2','$img_3','$img_4','$img_5','$descriptionArticle','$quantite','$categorie_idCategorie',$quantite_taille[0],$quantite_taille[1],$quantite_taille[2],$quantite_taille[3],$quantite_taille[4],$quantite_taille[5])";
+                            (nomArticle, prixArticle, imageArticle,img_2, img_3 ,img_4 ,img_5 , descriptionArticle, quantite, categorie_idCategorie,type,quantite_taille_xs,quantite_taille_s,quantite_taille_m,quantite_taille_l,quantite_taille_xl,quantite_taille_xxl) VALUES 
+                            ('$nomArticle','$prixArticle','$imageArticle','$img_2','$img_3','$img_4','$img_5','$descriptionArticle','$quantite','$categorie_idCategorie','$type',$quantite_taille[0],$quantite_taille[1],$quantite_taille[2],$quantite_taille[3],$quantite_taille[4],$quantite_taille[5])";
                     if($bdd ->exec($sql) == true){
                         $status = "succes";
                     }else{
@@ -329,8 +331,8 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         }
         if(!isset($erreur)){
             $nomCategorie = $_POST['nomCategorie'];
-            $sousCategorie = $_POST['sousCategorie'];
-            $sql = "INSERT INTO intmarket.categorie(nomCategorie, sousCategorie) VALUES ('$nomCategorie','$sousCategorie')";
+            $typeCategorie = $_POST['typeCategorie'];
+            $sql = "INSERT INTO intmarket.categorie(nomCategorie, typeCategorie) VALUES ('$nomCategorie','$typeCategorie')";
             if($bdd ->exec($sql) == true){
                 $status = "succes";
             }else{
@@ -397,8 +399,8 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         }
         if(!isset($erreur) || !isset($status)){
             $sql = "INSERT INTO intmarket.utilisateur
-                (civilite,nom, prenom,dateDeNaissance, mail, mdp, addresse, panier, role)
-                 VALUES ('$civilite','$nom','$prenom','$dateDeNaissance','$mail','$mdp','$addresse','$panier','$role');";
+                (civilite,nom, prenom,dateDeNaissance, mail, mdp, addresse, role)
+                 VALUES ('$civilite','$nom','$prenom','$dateDeNaissance','$mail','$mdp','$addresse','$role');";
             if($bdd ->exec($sql) == true){
                 $status = "succes";
             }else{

@@ -8,7 +8,7 @@ function verifier_quantite_taille_vetement($id){
         $taille = array("xs","s","m","l","xl","xxl");
         for ($i = 0; $i < count($taille);$i++){
             $elt = "quantite_taille_".$taille["$i"];
-            if($trouve["$elt"] !== NULL && $trouve[$elt] !== 0){
+            if($trouve["$elt"] !== NULL && $trouve["$elt"] !== 0){
                 $option .= "<option value='".$taille[$i]."'>".$taille[$i]."</option>";
             }else{
                 $option .= "";
@@ -35,7 +35,7 @@ function afficher_image_item($id){
 if(!isset($_GET['article'])){
     $donne = $bdd->query("SELECT * FROM intmarket.article");
     while ($trouve = $donne->fetch()){
-        if($trouve['categorie_idCategorie'] == 7){
+        if($trouve['categorie_idCategorie'] == 1){
             echo "<li class='item_produit'>
                     <article class='mode-homme'>
                         <div class='image-contient'>
@@ -67,7 +67,6 @@ if(!isset($_GET['article'])){
                 ".$trouve['descriptionArticle']."
                 </div>
                 <form action='./modele/ajouter_au_panier.php' method='post'>
-                    <input type='hidden' name='idArticle' value='$idArticle'>
                     <label><h3>Sélectionner la taille : </h3></label>
                     <select name='taille'>
                         ".verifier_quantite_taille_vetement($idArticle)."
