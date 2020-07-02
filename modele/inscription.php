@@ -10,6 +10,7 @@ if (isset($donne['valider'])) {
     $nom = $donne['nom'];
     $prenom = $donne['prenom'];
     $addresse = $donne['addresse'];
+    $inscription = true;
 
     $reponde = $bdd->query("SELECT mail FROM intmarket.utilisateur");
     if($mdp == false){
@@ -40,8 +41,8 @@ if (isset($donne['valider'])) {
 
         header("location: ../index.php?action=formulaire_inscription&erreur=$erreur");
     } else {
-        $requete = $bdd->prepare("INSERT INTO intmarket.utilisateur(`nom`,`prenom`,`mail`,`mdp`,`addresse`,`panier`,`role`) VALUES (?,?,?,?,?,?,?)");
-        $requete->execute(array($nom, $prenom, $mail, $mdp, $addresse, '', "client"));
+        $requete = $bdd->prepare("INSERT INTO intmarket.utilisateur(`nom`,`prenom`,`mail`,`mdp`,`addresse`,`role`) VALUES (?,?,?,?,?,?)");
+        $requete->execute(array($nom, $prenom, $mail, $mdp, $addresse, "client"));
         $reponde = $bdd->query("SELECT idUtilisateur,mail FROM intmarket.utilisateur");
         while ($trouve = $reponde->fetch()) {
             if ($trouve['mail'] == $mail) {
