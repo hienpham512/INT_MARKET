@@ -44,6 +44,11 @@ if (isset($donne['valider'])) {
         $requete = $bdd->prepare("INSERT INTO intmarket.utilisateur(`nom`,`prenom`,`mail`,`mdp`,`addresse`,`role`) VALUES (?,?,?,?,?,?)");
         $requete->execute(array($nom, $prenom, $mail, $mdp, $addresse, "client"));
         $reponde = $bdd->query("SELECT idUtilisateur,mail FROM intmarket.utilisateur");
+        $donne = $bdd->query("SELECT * FROM intmarket.utilisateur WHERE mail = '$mail';");
+        while ($trouve = $donne->fetch()){
+            $idUtilisateur = intval($trouve['idUtilisateur']);
+            $reponde = $bdd->query("INSERT INTO intmarket.panier(utilisateur_idUtilisateur)VALUES ($idUtilisateur)");
+        }
         while ($trouve = $reponde->fetch()) {
             if ($trouve['mail'] == $mail) {
                 $_SESSION['idUtilisateur'] = $trouve['idUtilisateur'];

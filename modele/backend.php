@@ -155,7 +155,6 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
             $status = "erreur";
             $erreur = "moin_de_6_carractere";
         }
-        $panier = $_POST['panier'];
         $role = $_POST['role'];
         $addresse = $_POST['addresse'];
         $dateDeNaissance = $_POST['dateDeNaissance'];
@@ -177,7 +176,6 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                                  prenom = '$prenom',
                                  mail = '$mail',
                                  mdp = '$mdp',
-                                 panier = '',
                                  addresse = '$addresse',
                                  role = '$role'
                                  WHERE utilisateur.idUtilisateur = '$idUtilisateur';";
@@ -188,7 +186,6 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                                  prenom = '$prenom',
                                  mail = '$mail',
                                  mdp = '$mdp',
-                                 panier = '',
                                  addresse = '$addresse',
                                  role = '$role',
                                  dateDeNaissance = '$dateDeNaissance'
@@ -370,9 +367,7 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
             $compteur = 0;
             for($i = 0; $i < count($value); $i++){
                 if($value[$i] !== " " || $value[$i] !== "   "){
-                    if($key !== 'panier'){
-                        $compteur++;
-                    }
+                    $compteur++;
                 }
             }
             if($compteur == 0){
@@ -385,7 +380,6 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         $prenom = $_POST['prenom'];
         $mail = $_POST['mail'];
         $mdp = $_POST['mdp'];
-        $panier = $_POST['panier'];
         $role = $_POST['role'];
         $addresse = $_POST['addresse'];
         $dateDeNaissance = $_POST['dateDeNaissance'];

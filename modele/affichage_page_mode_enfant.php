@@ -32,6 +32,8 @@ function afficher_image_item($id){
     }
     return $img;
 }
+
+
 if(!isset($_GET['article'])){
     $donne = $bdd->query("SELECT * FROM intmarket.article");
     while ($trouve = $donne->fetch()){
@@ -67,6 +69,7 @@ if(!isset($_GET['article'])){
                 ".$trouve['descriptionArticle']."
                 </div>
                 <form action='./modele/ajouter_au_panier.php' method='post'>
+                    <input type='hidden' name='categorie' value='".$_GET['action']."'>
                     <input type='hidden' name='idArticle' value='$idArticle'>
                     <label><h3>Sélectionner la taille : </h3></label>
                     <select name='taille'>
