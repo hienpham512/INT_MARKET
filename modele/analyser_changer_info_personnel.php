@@ -36,6 +36,8 @@
                     break;
                 }
             }
+            var_dump($sql);
+            var_dump($_SESSION['status']);
         }elseif (isset($_POST['changer_mdp'])){
             $mdp_actuel = $_POST['mdp_actuel'];
             $nouveau_mdp = $_POST['nouveau_mdp'];
@@ -69,4 +71,5 @@
         }
     }
 ?>
+
 <meta http-equiv="refresh" content="0;URL=../index.php?action=votre_compte">

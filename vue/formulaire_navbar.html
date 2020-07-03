@@ -29,8 +29,17 @@
             <th class="panier">
                 <div>
                     <img src="./vue/photo_specific/sac.png" width="50px" height="50px">
+                    <div class='dropdown'>
+                        <a  href='#' onclick='myFunction()' class='dropbtn_1' style='display: contents;'><img src='./vue/photo_specific/panier.png' class='photo_panier' width='80px' ; height='80px'></a>
+                        <div class="item-panier">
+                        <div id='myDropdown' class='dropdown-content'>
 
-                    <a href="./index.php?action=panier" class="photo_panier"><img src="./vue/photo_specific/panier.png" class="photo_panier" width='80px' ; height='80px'></a>
+                    <?php
+                        include("./modele/affichage_different_panier.php");
+                    ?>
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </th>
         </tr>
@@ -102,4 +111,33 @@
         </tr>
     </table>
 </body>
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn_1')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn_1')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content-panier");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
 </html>
