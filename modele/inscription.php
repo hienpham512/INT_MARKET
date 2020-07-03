@@ -47,6 +47,7 @@ if (isset($donne['valider'])) {
         $donne = $bdd->query("SELECT * FROM intmarket.utilisateur WHERE mail = '$mail';");
         while ($trouve = $donne->fetch()){
             $idUtilisateur = intval($trouve['idUtilisateur']);
+            $_SESSION['idUtilisateur'] = $idUtilisateur;
             $reponde = $bdd->query("INSERT INTO intmarket.panier(utilisateur_idUtilisateur)VALUES ($idUtilisateur)");
         }
         while ($trouve = $reponde->fetch()) {
@@ -59,4 +60,5 @@ if (isset($donne['valider'])) {
 } else {
     header("location: ../index.php?action=formulaire_inscription");
 }
+
 ?>
