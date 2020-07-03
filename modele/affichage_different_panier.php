@@ -24,7 +24,8 @@ function compter_les_meme_article_dans_meme_panier($elt_panier){
                         $compteur ++;
                         unset($elt_panier[$j]);
                     }
-
+                }else{
+                    continue;
                 }
             }
             $elt_panier[$i] =strval($elt_panier["$i"])."-".$compteur;
