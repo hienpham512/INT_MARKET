@@ -68,7 +68,6 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
         $prixArticle = $_POST['prixArticle'];
         $descriptionArticle = $_POST['descriptionArticle'];
 
-        $quantite = intval($_POST['quantite']);
         $categorie_idCategorie = intval($_POST['categorie_idCategorie']);
         $quantite_taille = array("xs","s","m","l","xl","xxl");
         for ($i = 0; $i< count($quantite_taille);$i++){
@@ -77,6 +76,14 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                 $quantite_taille[$i] = intval($_POST[$elt]);
             }else{
                 $quantite_taille[$i] = '';
+            }
+        }
+        if(isset($_POST['quantite'])){
+            $quantite = $_POST['quantite'];
+        }else{
+            $quantite = 0;
+            for($i = 0; $i < count($quantite_taille); $i++){
+                $quantite += intval($quantite_taille[$i]);
             }
         }
         $type = $_POST['type'];
@@ -279,7 +286,6 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
             $nomArticle = $_POST['nomArticle'];
             $prixArticle = $_POST['prixArticle'];
             $descriptionArticle = $_POST['descriptionArticle'];
-            $quantite = intval($_POST['quantite']);
             $nomCategorie = $_POST['nomCategorie'];
             $typeCategorie = $_POST['typeCategorie'];
             $quantite_taille = array("xs","s","m","l","xl","xxl");
@@ -289,6 +295,14 @@ if(isset($_POST) && isset($_SESSION['role']) && $_SESSION['role'] == 'administra
                     $quantite_taille[$i] = intval($_POST[$elt]);
                 }else{
                     $quantite_taille[$i] = '';
+                }
+            }
+            if(isset($_POST['quantite'])){
+                $quantite = $_POST['quantite'];
+            }else{
+                $quantite = 0;
+                for($i = 0; $i < count($quantite_taille); $i++){
+                    $quantite += intval($quantite_taille[$i]);
                 }
             }
             $type = $_POST['type'];

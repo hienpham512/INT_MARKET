@@ -103,8 +103,9 @@ input[type=text]:focus {
     z-index: 99999;
 }
 #myDropdown {
-    margin-left: -15%;
-    width: 30%;
+    margin-left: -25%;
+    width: 40%;
+    height: 100%;
 }
 
 .dropdown-content a {
@@ -138,8 +139,8 @@ button.dropbtn_1 {
     display: contents;
 }
 img.item-image-panier {
-    height: 20%;
-    width: 20%;
+    height: 10%;
+    width: 10%;
     margin-left: -10%;
 }
 a#lien-item {
